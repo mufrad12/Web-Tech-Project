@@ -2,178 +2,188 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Employee Profile Update</title>
+    <title>Edit Employee Profile</title>
   </head>
   <body>
+  	<center>
+  		
+	    <h1>Edit Employee Profile</h1>
 
-    <h1>Employee Profile Update</h1>
+	    <?php
+	      $firstNameErr = $lastNameErr = $genderErr =  $emailErr = $userNameErr = $passwordErr = $rEmailErr = "" ;
 
-    <?php
-      $firstNameErr = $lastNameErr = $genderErr = $dobErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
+	      $firstName = ""; 
+	      $lastName = "";
+	      $gender = "";
+	      $email = "";
+	      $userName= "";
+	      $password= "";
+	      $rEmail= "";
 
-      $firstName = ""; 
-      $lastName = "";
-      $gender = "";
-      $dob = "";
-      $email = "";
-      $id = "";
-      $userName= "";
-      $password= "";
-      $conPassword = "";
-      
+	      if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-      if($_SERVER["REQUEST_METHOD"] == "POST") {
+	        if(empty($_POST['fname'])) {
+	          $firstNameErr = "Please fill up the first name properly";
+	        }
+	        else {
+	          $firstName = $_POST['fname'];
+	        }
 
-        if(empty($_POST['id'])) {
-          $idErr = "Please fill up the id properly";
-        }
-        else {
-          $id = $_POST['id'];
-        }
+	        if(empty($_POST['lname'])) {
+	          $lastNameErr = "Please fill up the last name properly";
+	        }
+	        else {
+	          $lastName = $_POST['lname'];
+	        }
 
-        if(empty($_POST['fname'])) {
-          $firstNameErr = "Please fill up the first name properly";
-        }
-        else {
-          $firstName = $_POST['fname'];
-        }
+	        if(empty($_POST['email'])) {
+	          $emailErr = "Please enter your email";
+	        }
+	        else {
+	          $email = $_POST['email'];
 
-        if(empty($_POST['lname'])) {
-          $lastNameErr = "Please fill up the last name properly";
-        }
-        else {
-          $lastName = $_POST['lname'];
-        }
+	          if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+	            { 
+	              $emailErr = "Invalid email format"; 
+	            }
+	        }
 
-        if(empty($_POST['dob'])) {
-          $dobErr = "Please fill up the date of birth properly";
-        }
-        else {
-          $dob = $_POST['dob'];
-        }
+	        if(empty($_POST['uname'])) {
+	          $userNameErr = "Please fill up the username properly";
+	          }
+	        else {
+	          $userName = $_POST['uname'];
+	        }
 
-        if(empty($_POST['email'])) {
-          $emailErr = "Please enter an email";
-        }
-        else {
-          $email = $_POST['email'];
+	        if(empty($_POST['password'])) {
+	          $passwordErr = "Please fill up the password properly";
+	        }
+	        else {
+	          $password = $_POST['password'];
+	        }
 
-          if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
-            { 
-              $emailErr = "Invalid email format"; 
-            }
-        }
+	        if(empty($_POST['remail'])) {
+	        $rEmailErr = "Recovery Email is required";
+	        }
+	        else {
+	          $rEmail = $_POST['remail'];
+	        
+	             if (!filter_var($rEmail, FILTER_VALIDATE_EMAIL)) 
+	          { $rEmailErr = "Invalid recovery email format"; }
+	        }
 
-        if(empty($_POST['uname'])) {
-          $userNameErr = "Please fill up the username properly";
-          }
-        else {
-          $userName = $_POST['uname'];
-        }
+	        if (empty($_POST['gender'])) {
+	               $genderErr = "Gender is required"; 
+	        } 
 
-        if(empty($_POST['password'])) {
-          $passwordErr = "Please fill up the password properly";
-        }
-        else {
-          $password = $_POST['password'];
-        }
+	        else { 
+	          $gender = $_POST['gender']; 
+	        }
+	        
+	      }
 
-        if(empty($_POST['conPassword'])) {
-        $conPasswordErr = "Recovery Email is required";
-        }
-        else {
-          $conPassword = $_POST['conPassword'];
-        
-             if (!($conPassword == $password)) 
-          { $conPasswordErr = "Password not matched"; }
-        }
+	    ?>
 
-        if (empty($_POST['gender'])) {
-               $genderErr = "Gender is required"; 
-        } 
+	    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+	      <fieldset style="margin: 0px 700px ;">
+	        <legend>Basic Information: </legend>
 
-        else { 
-          $gender = $_POST['gender']; 
-        }
-        
-      }
+	        <label for="fname">FirstName:</label>
+	        <input type="text" name="fname" id="fname" value="<?php echo $firstName;?>">
+	        <br>
+	        <p style="color:red"><?php echo $firstNameErr; ?></p>
 
-    ?>
-    
+	        <label for="lname">LastName:</label>
+	        <input type="text" name="lname" id="lname" value="<?php echo $lastName ?>">
+	        <br>
+	        <p style="color:red"><?php echo $lastNameErr; ?></p>
 
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-      <fieldset>
-        <legend>Basic Information: </legend>
+	        <label for="gender">Choose Gender:</label>
 
-        <label for="fname">FirstName:</label>
-        <input type="text" name="fname" id="fname" value="<?php echo $firstName;?>">
-        <br>
-        <p style="color:red"><?php echo $firstNameErr; ?></p>
+	        <input type="radio" name="gender" 
+	        <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male 
 
-        <label for="lname">LastName:</label>
-        <input type="text" name="lname" id="lname" value="<?php echo $lastName ?>">
-        <br>
-        <p style="color:red"><?php echo $lastNameErr; ?></p>
+	        <input type="radio" name="gender" 
+	        <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female 
 
+	        <input type="radio" name="gender" 
+	        <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other
+	        <p style="color:red"><?php echo $genderErr; ?></p>
 
-        <label for="gender">Choose Gender:</label>
+	        <label for="email">Email:</label>
+	        <input type="email" name="email" id="email" placeholder="...@gmail.com" value="<?php echo $email ?>">
+	        <br>
+	        <p style="color:red"><?php echo $emailErr; ?></p>
 
-        <input type="radio" name="gender" 
-        <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male 
+	      </fieldset>
+	      <br>
+	     
+	      <fieldset style="margin: 0px 700px ;">
 
-        <input type="radio" name="gender" 
-        <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female 
+	        <legend>User Account Information: </legend>
 
-        <input type="radio" name="gender" 
-        <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other
-        <p style="color:red"><?php echo $genderErr; ?></p>
+	        <label for="uname">UserName:</label>
+	        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
+	        <br>
+	        <p style="color:red"><?php echo $userNameErr; ?></p>
 
-        <label for="dob">DOB:</label>
-        <input type="date" name="dob" id="dob" value="<?php echo $dob ?>">
-        <br>
-        <p style="color:red"><?php echo $dobErr; ?></p>
+	        <label for="pass">Password:</label>
+	        <input type="password" name="password" id="password" value="<?php echo $password; ?>">
+	        <br>
+	        <p style="color:red"><?php echo $passwordErr; ?></p>
+	        
+	        <label for="remail">Recovery Email Address:</label>
+	        <input type="email" name="remail" id="remail" placeholder="...@gmail.com" value="<?php echo $rEmail ?>">
+	        <br>
+	        <p style="color:red"><?php echo $rEmailErr; ?></p>
 
+	      </fieldset>
+			<br>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" placeholder="...@gmail.com" value="<?php echo $email ?>">
-        <br>
-        <p style="color:red"><?php echo $emailErr; ?></p>
+			<input type="submit" value="Confirm">
 
-      </fieldset>
-      <br>
-     
-      <fieldset>
+			</form>
+			<br>
 
-        <legend>Employee Account Information: </legend>
+			<?php
 
-        <label for="id">ID:</label>
-        <input type="text" name="id" id="id" value="<?php echo $id;?>">
-        <br>
-        <p style="color:red"><?php echo $idErr; ?></p>
+			if($firstName != "" && $lastName != "" && $gender != "" && $email != "" && $userName != "" && $password != "" && $rEmail != "")
+			{
+		
+				$arr1 = array('firstName' => $firstName, 'lastName' => $lastName, 'gender' => $gender, 'email' => $email, 'userName' => $userName, 'password' =>  $password, 'rEmail' => $rEmail);
 
-        <label for="uname">UserName:</label>
-        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
-        <br>
-        <p style="color:red"><?php echo $userNameErr; ?></p>
+	    		$json_encoded_text = json_encode($arr1); 
 
-        <label for="pass">Password:</label>
-        <input type="password" name="password" id="password" value="<?php echo $password; ?>">
-        <br>
-        <p style="color:red"><?php echo $passwordErr; ?></p>
-        
-        <label for="conPassword">Re-type Password:</label>
-        <input type="password" name="conPassword" id="conPassword" value="<?php echo $conPassword ?>">
-        <br>
-        <p style="color:red"><?php echo $conPasswordErr; ?></p>
+	    		$file1 = fopen("login.txt", "w");
+			    fwrite($file1, $json_encoded_text);
 
-      </fieldset>
-      <br>
-      
-      <input type="submit" value="Update" class="updateEmployeeBtn">
-      <input type="submit" value="Delete" class="deleteEmployeeBtn">
+			    fclose($file1);
 
-      </form>
-      <br>
+			}
+
+			$file2 = fopen("login.txt", "r");
+	        $read = fread($file2, filesize("login.txt"));
+	        fclose($file2);
+
+			$json_decoded_text = json_decode($read, true);
+
+	        echo $json_decoded_text['firstName'];
+	        echo "<br>";
+	        echo $json_decoded_text['lastName'];
+	        echo "<br>";
+	        echo $json_decoded_text['gender'];
+	        echo "<br>";
+	        echo $json_decoded_text['email'];
+	        echo "<br>";
+	        echo $json_decoded_text['userName'];
+	        echo "<br>";
+	        echo $json_decoded_text['password'];
+	        echo "<br>";
+	        echo $json_decoded_text['rEmail'];
+	        echo "<br>";
+			
+			?>
+		</center>
 
     </body>
 </html>
