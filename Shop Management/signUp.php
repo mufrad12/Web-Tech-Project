@@ -4,15 +4,15 @@
 	<title>Sign Up</title>
 </head>
 <body>
-
+<center>
 	<h1>Sign Up</h1>
-
+	
 	<?php
-		$shopNameErr = $shopAddressErr = $idErr = $usernameErr=  $emailErr = $passwordErr= $confirmpassErr="";
+		$shopNameErr = $shopAddressErr = $idErr = $userNameErr=  $emailErr = $passwordErr= $confirmpassErr="";
 
 		$shopName = ""; 
 		$shopAddress = ""; 
-		$username= "";
+		$userName= "";
 		$id = "";
 		$email = "";
 		$password= "";
@@ -50,11 +50,11 @@
                $id = $_POST['id'];
                 
                 }
-			 if(empty($_POST['username'])) {
-				$usernameErr = "Please fill up the username properly";
+			 if(empty($_POST['userName'])) {
+				$userNameErr = "Please fill up the username properly";
 			}
 			else {
-				$username = $_POST['username'];
+				$userName = $_POST['userName'];
 			}
            if(empty($_POST['password'])) {
 				$passwordErr = "Please fill up the password properly";
@@ -78,7 +78,7 @@
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		
 		<!-- Input Text Field -->
-		<fieldset>
+		<fieldset style="margin: 0px 600px ;">
 			<legend> Basic Information :</legend>
 
 		   <label for="shopName">Shop Name :</label>
@@ -101,7 +101,7 @@
 
 		</fieldset>
 
-		<fieldset>
+		 <fieldset style="margin: 0px 600px ;">
 			<legend> User Account Information :</legend>
 
 			<label for="id">Id :</label>
@@ -110,9 +110,9 @@
     
             <br>
 
-		   <label for="username">Username :</label>
-		   <input type="text" name="username" id="username" value="<?php echo $username; ?>"> 
-		   <p style="color:red"><?php echo $usernameErr; ?></p>
+		   <label for="userName">Username :</label>
+		   <input type="text" name="userName" id="userName" value="<?php echo $userName; ?>"> 
+		   <p style="color:red"><?php echo $userNameErr; ?></p>
 		
 		   <br>
 
@@ -128,13 +128,53 @@
     
           <br>
 
-		 </fieldset>
-		 <br>
+		</fieldset>
+			<br>
 
-		 <input type="submit" value="Submit">
+			<input type="submit" value="Submit">
 
+			</form>
+			<br>
+
+			<?php
+
+			if($shopName != "" && $shopAddress != "" && $userName != "" && $id != "" && $email != "" && $password != "" && $confirmpass != "")
+			{
 		
-		 </form>
+				$arr1 = array('shopName' => $shopName, 'shopAddress' => $shopAddress, 'userName' => $userName, 'id' => $id, 'email' => $email, 'password' =>  $password, 'confirmpass' => $confirmpass);
 
-</body>
+	    		$json_encoded_text = json_encode($arr1); 
+
+	    		$file1 = fopen("registrationData.txt", "w");
+			    fwrite($file1, $json_encoded_text);
+
+			    fclose($file1);
+
+			}
+
+			$file2 = fopen("registrationData.txt", "r");
+	        $read = fread($file2, filesize("registrationData.txt"));
+	        fclose($file2);
+
+			$json_decoded_text = json_decode($read, true);
+
+	        echo $json_decoded_text['shopName'];
+	        echo "<br>";
+	        echo $json_decoded_text['shopAddress'];
+	        echo "<br>";
+	        echo $json_decoded_text['userName'];
+	        echo "<br>";
+	        echo $json_decoded_text['id'];
+	        echo "<br>";
+	        echo $json_decoded_text['email'];
+	        echo "<br>";
+	        echo $json_decoded_text['password'];
+	        echo "<br>";
+	        echo $json_decoded_text['confirmpass'];
+	        echo "<br>";
+			
+			?>
+		</center>
+
+    </body>
 </html>

@@ -5,9 +5,9 @@
     <title>Shop Update</title>
   </head>
   <body>
-
+ <center>
     <h1>Shop Information</h1>
-
+ 
     <?php
       $shopNameErr = $shopAddressErr = $idErr = $usernameErr=  $emailErr = $passwordErr= $confirmpassErr="";
 
@@ -76,12 +76,13 @@
       }
 
     }
+
   ?>
 
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
     
     <!-- Input Text Field -->
-    <fieldset>
+    <fieldset style="margin: 0px 600px ;">
       <legend> Basic Information :</legend>
 
        <label for="shopName">Shop Name :</label>
@@ -104,17 +105,17 @@
 
     </fieldset>
 
-    <fieldset>
+    <fieldset style="margin: 0px 600px ;">
       <legend> User Account Information :</legend>
 
        <label for="id">Id :</label>
-       <input type="text" name="id" id="id" value="<?php echo $id; ?>"> 
+       <input type="text" name="id" id="id" value="<?php echo $id; ?>"disabled> 
        <p style="color:red"><?php echo $idErr; ?></p>
     
        <br>
 
        <label for="username">Username :</label>
-       <input type="text" name="username" id="username" value="<?php echo $username; ?>"> 
+       <input type="text" name="username" id="username" value="<?php echo $username; ?>"disabled> 
        <p style="color:red"><?php echo $usernameErr; ?></p>
     
        <br>
@@ -135,9 +136,9 @@
 
       <br>
      <input type="submit" value="Update Shop Information" class="updateShopBtn">
-
+     <input type="submit" value="Delete Shop Information" class="deleteShopBtn">
     
      </form>
-
+ </center>
 </body>
 </html>

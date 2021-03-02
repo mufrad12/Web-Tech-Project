@@ -5,17 +5,19 @@
     <title>Add Book </title>
   </head>
   <body>
-
+  <center>
     <h1>Book Management</h1>
 
     <?php
-      $thumbnailErr = $booktitleErr = $bookauthorErr = $bookpublisherErr = $bookeditionErr = "";
+      $thumbnailErr =  $idErr = $booktitleErr = $bookauthorErr = $bookpublisherErr = $bookeditionErr = $bookpriceErr ="";
 
       $thumbnail = "";
+      $id = "";
       $booktitle = ""; 
       $bookauthor = "";
       $bookpublisher = "";
       $bookedition= "";
+      $bookprice= "";
 
 
     
@@ -26,6 +28,13 @@
         }
         else {
           $thumbnail = $_POST['thumbnail'];
+        }
+
+         if(empty($_POST['id'])) {
+          $idErr = "Please fill up id properly";
+        }
+        else {
+          $id = $_POST['id'];
         }
 
         if(empty($_POST['booktitle'])) {
@@ -55,18 +64,30 @@
         else {
           $bookedition = $_POST['bookedition'];
         }
+
+        if(empty($_POST['bookprice'])) {
+          $bookpriceErr = "Please fill up the book price properly";
+          }
+        else {
+          $bookprice = $_POST['bookprice'];
+        }
         
       }
 
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-      <fieldset>
+        <fieldset style="margin: 0px 600px ;">
         <legend>Book Information: </legend>
 
         <label for="thumbnail">Book Thumbnail:</label>
         <input type="text" name="thumbnail" id="thumbnail" value="<?php echo $thumbnail;?>">
         <br>
         <p style="color:red"><?php echo $thumbnailErr; ?></p>
+
+       <label for="id">Book Id:</label>
+        <input type="text" name="id" id="id" value="<?php echo $id;?>">
+        <br>
+        <p style="color:red"><?php echo $idErr; ?></p>
 
         <label for="booktitle">Book Title:</label>
         <input type="text" name="booktitle" id="booktitle" value="<?php echo $booktitle;?>">
@@ -88,8 +109,10 @@
         <br>
         <p style="color:red"><?php echo $bookeditionErr; ?></p>
 
-
-
+        <label for="bookprice">Book Price:</label>
+        <input type="text" name="bookprice" id="bookprice" value="<?php echo $bookprice ?>">
+        <br>
+        <p style="color:red"><?php echo $bookpriceErr; ?></p>
 
       </fieldset>
       <br>
@@ -98,6 +121,46 @@
 
       </form>
       <br>
+
+      <?php
+
+      if($thumbnail != "" && $id != "" && $booktitle != "" && $bookauthor != "" && $bookpublisher != "" && $bookedition != "" && $bookprice != "")
+      {
+    
+        $arr1 = array('thumbnail' => $thumbnail, 'id' => $id, 'booktitle' => $booktitle, 'bookauthor' => $bookauthor, 'bookpublisher' => $bookpublisher, 'bookedition' =>  $bookedition, 'bookprice' => $bookprice);
+
+          $json_encoded_text = json_encode($arr1); 
+
+          $file1 = fopen("bookData.txt", "w");
+          fwrite($file1, $json_encoded_text);
+
+          fclose($file1);
+
+      }
+
+      $file2 = fopen("bookData.txt", "r");
+          $read = fread($file2, filesize("bookData.txt"));
+          fclose($file2);
+
+      $json_decoded_text = json_decode($read, true);
+
+          echo $json_decoded_text['thumbnail'];
+          echo "<br>";
+          echo $json_decoded_text['id'];
+          echo "<br>";
+          echo $json_decoded_text['booktitle'];
+          echo "<br>";
+          echo $json_decoded_text['bookauthor'];
+          echo "<br>";
+          echo $json_decoded_text['bookpublisher'];
+          echo "<br>";
+          echo $json_decoded_text['bookedition'];
+          echo "<br>";
+          echo $json_decoded_text['bookprice'];
+          echo "<br>";
+      
+      ?>
+    </center>
 
     </body>
 </html>

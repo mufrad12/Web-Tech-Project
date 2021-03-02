@@ -1,18 +1,30 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Shop Login</title>
+    <title>Login</title>
   </head>
   <body>
 
-    <h1>Shop Login</h1>
-
+     <center>
+    <h1>Login</h1>
+     
     <?php
       $userNameErr = $passwordErr = "" ;
 
       $userName = "";
       $password = "";
+      $msg = "";
+      $flag = 0;
+
+      $filepath = "registrationData.txt";
+      $file = fopen($filepath,'r')
+      or die("unable to open file");
+
 
        if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -29,11 +41,59 @@
         else {
           $password = $_POST['password'];
         }
-      }
-    ?>
+
+   while($line = fgets($file))
+        {
+
+                  //list($firstName,$lastName,$gender,$email,$userNameV,$passwordV,$recoveryEmail) = explode( ",", $line );
+
+
+                  $json_decoded_text = json_decode($line, true);
+
+                  $userNameV= $json_decoded_text['userName'];
+                  $passwordV= $json_decoded_text['password'];
+          
+                  if($userNameV == $userName && $passwordV == $password)
+                  {
+                      $flag++;
+                      break;
+                  }       
+              }
+
+              if ($flag>0)
+              {
+                  $msg = "Logged in";
+                  echo $msg;
+                  echo "<br>";
+          
+                  $_SESSION['userNameV'] = $userName;
+                  $_SESSION['passwordV'] = $password;
+              
+                  echo "UserName: " . $_SESSION['userNameV'];
+                  echo "<br>";
+                  echo "Password is: " . $_SESSION['passwordV'];
+              }
+          
+              else
+              {
+                  $msg = "Login Denied!!!! Try again...";
+                  echo $msg;
+              }
+
+
+          }
+
+          session_unset();
+        session_destroy();
+        fclose($file);
+
+
+
+      ?>
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-      <fieldset>
+      <fieldset style="margin: 0px 600px ;">
+
         <legend>Login Information</legend>
 
         <label for="userName">UserName:</label>
@@ -49,11 +109,13 @@
 
       </fieldset>
       <br>
-      
+
+
+    
       <input type="submit" value="Login">
+      <a href="signUp.php" title="">Not yet registered?</a>
 
       </form>
-      <br>
-
+      </center>
     </body>
 </html>

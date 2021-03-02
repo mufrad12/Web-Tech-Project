@@ -5,31 +5,19 @@
     <title>Update-Delete Book</title>
   </head>
   <body>
+ <center>
 
     <h1>Book Management</h1>
 
     <?php
-      $srcErr = $thumbnailErr = $bookIdErr = $booktitleErr = $bookauthorErr = $bookpublisherErr = $bookeditionErr = "";
+        $thumbnailErr = $bookIdErr = $booktitleErr = $bookauthorErr = $bookpublisherErr = $bookeditionErr = "";
 
-      $src = "";
       $thumbnail = "";
       $bookId = "";
       $booktitle = ""; 
       $bookauthor = "";
       $bookpublisher = "";
-      $bookedition= "";
-
-       if($_SERVER["REQUEST_METHOD"] == "GET"){
-
-        if(empty($_GET['src'])) {
-          $srcErr = "Please fill up the Book ID";
-        }
-        else {
-          $src = $_GET['src'];
-        }
-
-       }
-      
+      $bookedition= ""; 
 
        if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -78,21 +66,9 @@
       }
 
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET">
-   <fieldset>
-      <label for="src">Search Book:</label>
-      <input type="search" name="src" id="src" value="<?php echo $src;?>">
-
-      <input type="submit" value="Search" class="srcmployeeBtn">
-      <p style="color:red"><?php echo $srcErr; ?></p>
-
-    </fieldset>
-    </form>
-    <br>
-
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-      <fieldset>
+      <fieldset style="margin: 0px 600px ;">
         <legend>Book Information: </legend>
 
         <label for="thumbnail">Book Thumbnail:</label>
@@ -101,7 +77,7 @@
         <p style="color:red"><?php echo $thumbnailErr; ?></p>
 
         <label for="bookId">Book Id:</label>
-        <input type="text" name="bookId" id="bookId" value="<?php echo $bookId;?>">
+        <input type="text" name="bookId" id="bookId" value="<?php echo $bookId;?>"disabled>
         <br>
         <p style="color:red"><?php echo $bookIdErr; ?></p>
 
@@ -134,6 +110,6 @@
 
       </form>
       <br>
-
+     </center>
     </body>
 </html>
