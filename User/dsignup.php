@@ -20,7 +20,7 @@
       $password= "";
       $conPassword = "";
 
-      
+      if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(empty($_POST['fname'])) {
           $firstNameErr = "Please fill up the first name properly";
         }
@@ -85,7 +85,7 @@
         else { 
           $gender = $_POST['gender']; 
         }
-        
+        }
 
     ?>
     
