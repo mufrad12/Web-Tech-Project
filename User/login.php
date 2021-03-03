@@ -114,7 +114,7 @@ session_start();
 
     
       <input type="submit" value="Login">
-      <a href="signUp.php" title="">Not yet registered?</a>
+      <a href="dsignup.php" title="">Not yet registered?</a>
 
       </form>
       </center>
