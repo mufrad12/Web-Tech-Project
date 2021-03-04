@@ -10,11 +10,10 @@
 
 
 <?php
-		$nameErr = $numberErr= $subjectErr=  $emailErr="";
+		$nameErr = $numberErr= $emailErr="";
 
 		$name = ""; 
 		$number = ""; 
-		$subject= "";
 		$email = "";
 
 
@@ -42,81 +41,50 @@
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
 				{ $emailErr = "Invalid email format"; }
 		         }
+		     }
 
-			 if(empty($_POST['subject'])) {
-				$subjectErr = "Please fill up the subject properly";
-			}
-			else {
-				$subject = $_POST['subject'];
-			}
-		}
 	?>
 
 
-<table style="width:100%;max-width:550px;border:1;" cellpadding="8" cellspacing="0">
+
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-	 
-           
-	<tr> 
-		<td>
+
+	
+
 			<label for="name">Name :</label>
-
-		</td> 
-
-		<td>
-			<input type="text" id="name" name="name" style="width:250px;" value="<?php echo $name; ?>" >
+			<input type="text" id="name" name="name" style="width:250px;margin-left: 80px;vertical-align: middle;" value="<?php echo $name; ?>" >
 			<p style="color:red"><?php echo $nameErr; ?></p>
-		</td> 
-	</tr> 
+	
 
-	<tr> 
-		<td>
 			<label for="number">Phone number:</label>
-		</td> 
-		<td>
-			<input name="number" type="text" style="width:250px;" value="<?php echo $number; ?>" >
+			<input name="number" type="text" style="width:250px;margin-left: 30px;vertical-align: middle;" value="<?php echo $number; ?>" >
 			<p style="color:red"><?php echo $numberErr; ?></p>
-		</td> 
-	</tr> 
 
-	<tr> 
-		<td>
+
 			<label for="email">Email address:</label>
-		</td> 
-		<td>
-			<input name="email" type="text" style="width:250px;" value="<?php echo $email; ?>" >
+			<input name="email" type="text" style="width:250px;margin-left: 30px;vertical-align: middle;" value="<?php echo $email; ?>" >
 			<p style="color:red"><?php echo $emailErr; ?></p>
-		</td> 
-	</tr> 
+ 
 
-	<tr> 
-		<td>
 			<label for="subject">Comments:</label>
-		</td> 
-		<td>
-			<textarea name="subject" rows="7" cols="40" style="width:350%;max-width:550px;" value="<?php echo $subject; ?>" >
+
+			<textarea name="subject" rows="7" cols="40" style="width:650px;margin-left: 50px;vertical-align: middle;" 
+			value="<?php echo $subject; ?>" >
+
 
 			</textarea>
-
-	</td>
-	</tr> 
-     
-     <tr> 
-		<td>
-			
-
-		</td> 
-
-		<td>
-			<input type="submit" value="Submit">
-		</td> 
-	</tr> 
+			<br>
+            <br>
+			<input type="submit" value="Submit" style="width:100px;margin-left: 125px;vertical-align: middle;">
 
 	
 	</form>
-		</table>
-      
-		
+	<br>
+      <?php
+
+         if ($name!=""  && $number!="" &&  $email!="" )
+				{ echo "<b> The form is submitted </b> ";}
+		   ?>
 
 		</body>
 </html>
