@@ -2,16 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Admin Management</title>
+    <title>Admin Update/Delete</title>
   </head>
   <body>
+  	<div class="bg">
 
-  		<h1>Add an Admin</h1>
+  		<h1>Admin Update/Delete</h1>
 
 	    <?php
-	      $srcAErr = $firstNameErr = $lastNameErr = $genderErr = $dobErr =  $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
+	      $firstNameErr = $lastNameErr = $genderErr = $dobErr =  $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
 
-	      $srcA = "";
+	      
 	      $firstName = ""; 
 	      $lastName = "";
 	      $gender = "";
@@ -22,17 +23,7 @@
 	      $password= "";
 	      $conPassword = "";
 
-	       if($_SERVER["REQUEST_METHOD"] == "GET"){
-
-	        if(empty($_GET['srcA'])) {
-	          $srcAErr = "Please fill up the admin username";
-	        }
-	        else {
-	          $srcE = $_GET['srcA'];
-	        }
-
-	       }
-	      
+	       
 
 	      if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -111,17 +102,6 @@
 	      }
 	    ?>
 
-	    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET">
-
-	      <label for="srcA">Search Admin:</label>
-	      <input type="search" name="srcA" id="srcA" value="<?php echo $srcA;?>" placeholder="search here">
-
-	      <input type="submit" value="Search" class="srcAserBtn">
-	      <p style="color:red"><?php echo $srcAErr; ?></p>
-
-	    </form>
-	    <br>
-
 
 	    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	      <fieldset>
@@ -170,12 +150,12 @@
 	        <legend>Admin Account Information: </legend>
 
 	        <label for="id">ID:</label>
-	        <input type="text" name="id" id="id" value="<?php echo $id;?>">
+	        <input type="text" name="id" id="id" value="<?php echo $id;?>" disabled>
 	        <br>
 	        <p style="color:red"><?php echo $idErr; ?></p>
 
 	        <label for="uname">UserName:</label>
-	        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
+	        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>" disabled>
 	        <br>
 	        <p style="color:red"><?php echo $userNameErr; ?></p>
 
@@ -189,13 +169,39 @@
 	        <br>
 	        <p style="color:red"><?php echo $conPasswordErr; ?></p>
 
-	      </fieldset>
-	      <br>
-	      
-	      <input type="submit" value="Add" class="addAdminBtn">
+			</fieldset>
+			<br>
 
-	      </form>
-	      <br>
+			<input type="submit" value="Update" class="updateAdminBtn">
+			<input type="submit" value="Delete" class="deleteAdminBtn">
+
+			</form>
+			<br>
+		</div>
+			<div class="footer">
+				<?php include 'footer.php';?>
+			</div>
+		  
+
+			<style>
+				body, html {
+				height: 95%;
+				margin: 0;
+				color: white;
+				}
+
+				.bg {
+					background-image: url('http://sfwallpaper.com/images/background-wallpaper-for-website-1.jpg');
+					height: 100%; 
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+				}
+				.footer{
+					color: white;
+					height: 7%;
+					background-color: #83888A;		}
+			</style>
 
     </body>
 </html>
