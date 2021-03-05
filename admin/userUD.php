@@ -2,16 +2,16 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>User Management</title>
+    <title>User Update/Delete</title>
   </head>
   <body>
+    <div class="bg">
 
-    <h1>User Management</h1>
+    <h1>User Update/Delete</h1>
 
     <?php
-      $srcUErr = $firstNameErr = $lastNameErr = $genderErr =  $dobErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
+      $firstNameErr = $lastNameErr = $genderErr =  $dobErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
 
-      $srcU = "";
       $firstName = ""; 
       $lastName = "";
       $gender = "";
@@ -22,18 +22,7 @@
       $password= "";
       $conPassword = "";
 
-       if($_SERVER["REQUEST_METHOD"] == "GET"){
-
-        if(empty($_GET['srcU'])) {
-          $srcUErr = "Please fill up the User username";
-        }
-        else {
-          $srcU = $_GET['srcU'];
-        }
-
-       }
-      
-
+       
       if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if(empty($_POST['id'])) {
@@ -111,18 +100,7 @@
       }
 
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET">
-
-      <label for="srcU">Search User:</label>
-      <input type="search" name="srcU" id="srcU" value="<?php echo $srcU;?>">
-
-      <input type="submit" value="Search" class="srcUmployeeBtn">
-      <p style="color:red"><?php echo $srcUErr; ?></p>
-
-    </form>
-    <br>
-
-
+    
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
       <fieldset>
         <legend>Basic Information: </legend>
@@ -169,12 +147,12 @@
         <legend>User Account Information: </legend>
 
         <label for="id">ID:</label>
-        <input type="text" name="id" id="id" value="<?php echo $id;?>">
+        <input type="text" name="id" id="id" value="<?php echo $id;?>" disabled>
         <br>
         <p style="color:red"><?php echo $idErr; ?></p>
 
         <label for="uname">UserName:</label>
-        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
+        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>" disabled>
         <br>
         <p style="color:red"><?php echo $userNameErr; ?></p>
 
@@ -196,6 +174,32 @@
 
       </form>
       <br>
+    </div>
+
+      <div class="footer">
+        <?php include 'footer.php';?>
+      </div>
+      
+
+      <style>
+        body, html {
+        height: 95%;
+        margin: 0;
+        color: white;
+        }
+
+        .bg {
+          background-image: url('http://sfwallpaper.com/images/background-wallpaper-for-website-1.jpg');
+          height: 100%; 
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .footer{
+          color: white;
+          height: 7%;
+          background-color: #83888A;    }
+      </style>
 
     </body>
 </html>
