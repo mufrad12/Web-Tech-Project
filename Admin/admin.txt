@@ -1,4 +1,0 @@
-{"firstName":"amdd","lastName":"sdqg","gender":"female","dob":"2021-03-16","email":"shatin.hasan73@gmail.com","userName":"admin","password":"0000","conPassword":"0000"}
-{"firstName":"amsd","lastName":"sjdg","gender":"female","dob":"2021-03-16","email":"shatin.hasan73@gmail.com","userName":"admin2","password":"0000","conPassword":"0000"}
-{"firstName":"amhd","lastName":"sdweg","gender":"female","dob":"2021-03-16","email":"shatin.hasan73@gmail.com","userName":"admin3","password":"0000","conPassword":"0000"}
-{"firstName":"amld","lastName":"sdhg","gender":"female","dob":"2021-03-16","email":"shatin.hasan73@gmail.com","userName":"admin4","password":"0000","conPassword":"0000"}

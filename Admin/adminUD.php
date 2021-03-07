@@ -5,6 +5,11 @@
     <title>Admin Update/Delete</title>
   </head>
   <body>
+  	
+  	<div class="header">
+  		<?php include 'header.php';?>
+	</div>
+
   	<div class="bg">
 
   		<h1>Admin Update/Delete</h1>
@@ -104,7 +109,7 @@
 
 
 	    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-	      <fieldset>
+	      <fieldset style="margin: 0% 40%;">
 	        <legend>Basic Information: </legend>
 
 
@@ -145,7 +150,7 @@
 	      </fieldset>
 	      <br>
 	     
-	      <fieldset>
+	      <fieldset style="margin: 0% 40%;">
 
 	        <legend>Admin Account Information: </legend>
 
@@ -172,7 +177,7 @@
 			</fieldset>
 			<br>
 
-			<input type="submit" value="Update" class="updateAdminBtn">
+			<input type="submit" value="Update" class="updateAdminBtn" style="margin-left: 40%;">
 			<input type="submit" value="Delete" class="deleteAdminBtn">
 
 			</form>
@@ -185,7 +190,7 @@
 
 			<style>
 				body, html {
-				height: 95%;
+				height: 90%;
 				margin: 0;
 				color: white;
 				}
@@ -200,7 +205,15 @@
 				.footer{
 					color: white;
 					height: 7%;
-					background-color: #83888A;		}
+					background-color: #83888A;
+				}
+				legend{
+		          text-align: center;
+		          font-weight: bold;
+		        }
+		        h1{
+		        	text-align: center;
+		        }
 			</style>
 
     </body>

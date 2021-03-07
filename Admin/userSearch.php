@@ -5,6 +5,10 @@
     <title>Search User</title>
   </head>
   <body>
+    <div class="header">
+      <?php include 'header.php';?>
+    </div>
+    
     <div class="bg">
 
     <h1>Search User</h1>
@@ -46,7 +50,7 @@
 
     <style>
       body, html {
-      height: 95%;
+      height: 90%;
       margin: 0;
       color: white;
       }

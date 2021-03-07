@@ -25,7 +25,19 @@ session_start();
 		$file = fopen($filepath,'r')
 		or die("unable to open file");
 
-		//echo $json_decoded_text['userName'];
+		//echo json_decode($file, true);
+		while($line = fgets($file))
+		{
+			$arr=json_decode($line, true);
+			print_r($arr)[0];
+			echo "<br>";
+		}
+		//$str = fread($file,filesize("admin.txt"));
+		
+		//$exp = (explode("\n",$str));
+		//print_r($exp);
+		//echo $exp[2]["userName"];
+
 
 		if($_SERVER["REQUEST_METHOD"] == "POST") 
 		{
@@ -115,11 +127,12 @@ session_start();
       </style>
       <a href="http://localhost/project/adminAdd.php" title="">Not yet registered?</a>
 
-	</form>
+      </form>
   </div>
   <div class="footer">
   	<?php include 'footer.php';?>
-  </div> 
+  </div>
+  
 
 	<style>
 		body, html {

@@ -5,9 +5,13 @@
     <title>Add an Admin</title>
   </head>
   <body>
+  	<div class="header">
+  		<?php include 'header.php';?>
+	</div>
+
   	<div class="bg">
 
-  		<h1 style="text-align: center;">Add an Admin</h1>
+  		<h1>Add an Admin</h1>
 
 	    <?php
 	      $firstNameErr = $lastNameErr = $genderErr = $dobErr =  $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
@@ -186,6 +190,7 @@
 
 		    		$file1 = fopen("admin.txt", "a");
 				    fwrite($file1, $json_encoded_text);
+				    fwrite($file1, "\n");
 
 				    fclose($file1);
 				}
@@ -198,8 +203,8 @@
 
 			<style>
 				body, html {
-				height: 95%;
-				margin: 0;
+				height: 90%;
+				margin: 0px;
 				color: white;
 				}
 
@@ -213,7 +218,15 @@
 				.footer{
 					color: white;
 					height: 7%;
-					background-color: #83888A;		}
+					background-color: #83888A;
+				}
+				legend{
+		          text-align: center;
+		          font-weight: bold;
+		        }
+		        h1{
+		        	text-align: center;
+		        }
 			</style>
     </body>
 </html>

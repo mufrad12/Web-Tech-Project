@@ -5,6 +5,10 @@
     <title>Search an Employee</title>
   </head>
   <body>
+    <div class="header">
+      <?php include 'header.php';?>
+    </div>
+    
     <div class="bg">
 
     <h1>Search an Employee</h1>
@@ -38,7 +42,7 @@
     </form>
     <br>
   </div>
-  
+
     <div class="footer">
       <?php include 'footer.php';?>
     </div>
@@ -46,7 +50,7 @@
 
     <style>
       body, html {
-      height: 95%;
+      height: 90%;
       margin: 0;
       color: white;
       }
