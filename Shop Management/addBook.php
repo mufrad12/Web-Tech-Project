@@ -5,6 +5,9 @@
     <title>Add Book </title>
   </head>
   <body>
+     <div class="header">
+      <?php include 'header.php';?>
+  </div>
   <center>
     <h1>Book Management</h1>
 
@@ -130,35 +133,13 @@
         $arr1 = array('thumbnail' => $thumbnail, 'id' => $id, 'booktitle' => $booktitle, 'bookauthor' => $bookauthor, 'bookpublisher' => $bookpublisher, 'bookedition' =>  $bookedition, 'bookprice' => $bookprice);
 
           $json_encoded_text = json_encode($arr1); 
+            
+            $file1 = fopen("bookData.txt", "a");
+            fwrite($file1, $json_encoded_text);
+            fwrite($file1, "\n");
 
-          $file1 = fopen("bookData.txt", "w");
-          fwrite($file1, $json_encoded_text);
-
-          fclose($file1);
-
-      }
-
-      $file2 = fopen("bookData.txt", "r");
-          $read = fread($file2, filesize("bookData.txt"));
-          fclose($file2);
-
-      $json_decoded_text = json_decode($read, true);
-
-          echo $json_decoded_text['thumbnail'];
-          echo "<br>";
-          echo $json_decoded_text['id'];
-          echo "<br>";
-          echo $json_decoded_text['booktitle'];
-          echo "<br>";
-          echo $json_decoded_text['bookauthor'];
-          echo "<br>";
-          echo $json_decoded_text['bookpublisher'];
-          echo "<br>";
-          echo $json_decoded_text['bookedition'];
-          echo "<br>";
-          echo $json_decoded_text['bookprice'];
-          echo "<br>";
-      
+            fclose($file1);
+        }
       ?>
     </center>
 

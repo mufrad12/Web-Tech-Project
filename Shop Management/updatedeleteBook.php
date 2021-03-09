@@ -5,19 +5,67 @@
     <title>Update-Delete Book</title>
   </head>
   <body>
+  	<div class="header">
+      <?php include 'header.php';?>
+  </div>
  <center>
 
     <h1>Book Management</h1>
 
     <?php
-        $thumbnailErr = $bookIdErr = $booktitleErr = $bookauthorErr = $bookpublisherErr = $bookeditionErr = "";
+       $srcAErr = $thumbnailErr =  $idErr = $booktitleErr = $bookauthorErr = $bookpublisherErr = $bookeditionErr = $bookpriceErr ="";
 
+      $srcA = "";
       $thumbnail = "";
-      $bookId = "";
+      $id = "";
       $booktitle = ""; 
       $bookauthor = "";
       $bookpublisher = "";
-      $bookedition= ""; 
+      $bookedition= "";
+      $bookprice= "";
+      $flag = 0;
+      $searchKey = "";
+
+      if(isset($_POST['src'])){
+          if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+          if(empty($_POST['srcA'])) {
+            $srcAErr = "Please fill up the book userName";
+          }
+          else {
+            $srcA = $_POST['srcA'];
+          }
+          
+         }
+
+      $f1 = fopen("bookData.txt", "r");
+      $data = fread($f1, filesize("bookData.txt"));
+      fclose($f1);
+      $data_after_newline_delimeter = explode("\n", $data);
+      $arr1 = array();
+      $searchKey = $srcA;
+
+      for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
+        $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
+        if($json_decoded['id'] === $searchKey)
+        {
+          echo $srcA." found";
+          $flag=1;
+          $thumbnail = $json_decoded['thumbnail']; 
+          $id = $json_decoded['id']; 
+          $booktitle = $json_decoded['booktitle']; 
+          $bookauthor = $json_decoded['bookauthor']; 
+          $bookpublisher= $json_decoded['bookpublisher']; 
+          $bookedition= $json_decoded['bookedition']; 
+          $bookprice = $json_decoded['bookprice']; 
+        }
+          }
+          if($flag==0)
+          echo $srcA." not found";
+      }
+
+      if((isset($_POST['update']))||(isset($_POST['delete'])))
+        {
 
        if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -28,11 +76,11 @@
           $thumbnail = $_POST['thumbnail'];
         }
 
-        if(empty($_POST['bookId'])) {
-          $bookIdErr = "Please fill up book book id properly";
+         if(empty($_POST['id'])) {
+          $idErr = "Please fill up id properly";
         }
         else {
-          $bookId = $_POST['bookId'];
+          $id = $_POST['id'];
         }
 
         if(empty($_POST['booktitle'])) {
@@ -62,13 +110,95 @@
         else {
           $bookedition = $_POST['bookedition'];
         }
+
+        if(empty($_POST['bookprice'])) {
+          $bookpriceErr = "Please fill up the book price properly";
+          }
+        else {
+          $bookprice = $_POST['bookprice'];
+        }
         
       }
 
-    ?>
+        $f1 = fopen("bookData.txt", "r");
+        $data = fread($f1, filesize("bookData.txt"));
+        fclose($f1);
+        $data_after_newline_delimeter = explode("\n", $data);
+        $arr1 = array();
+        $searchKey = $id;
+
+      if(isset($_POST['update']))
+        {
+
+      for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
+        $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
+        if($json_decoded['id'] === $searchKey)
+        {
+
+          $arr2 = array(
+            'thumbnail' => $thumbnail,
+            'booktitle' => $booktitle,
+            'bookauthor' => $bookauthor,
+            'id' => $json_decoded['id'],
+            'bookpublisher' => $bookpublisher,
+            'bookedition' => $bookedition,
+            'bookprice' => $bookprice
+          );
+          array_push($arr1, $arr2);
+        }
+
+        else
+        {
+          array_push($arr1, $json_decoded);
+        }
+      }
+
+      $f2 = fopen("bookData.txt", "w");
+      for($j = 0; $j < count($arr1); $j++) {
+        $json_encoded = json_encode($arr1[$j]);
+        fwrite($f2, $json_encoded . "\n");
+      }
+      fclose($f2);
+
+    }
+
+    if(isset($_POST['delete']))
+    {
+
+      for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
+        $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
+        if($json_decoded['id'] !== $searchKey) {
+          array_push($arr1, $json_decoded);
+        }
+
+      }
+      $f2 = fopen("bookData.txt", "w");
+      for($j = 0; $j < count($arr1); $j++) {
+        $json_encoded = json_encode($arr1[$j]);
+        fwrite($f2, $json_encoded . "\n");
+      }
+      fclose($f2);
+
+    }
+
+  }
+
+?>
+
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+
+     <label for="srcA">Search Shop:</label>
+        <input type="search" name="srcA" id="srcA" value="<?php echo $srcA;?>" placeholder="search here">
+
+        <input type="submit" name="src" value="Search" class="srcAserBtn">
+        <p style="color:red"><?php echo $srcAErr; ?></p>
+
+      </form>
+      <br>
+
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-      <fieldset style="margin: 0px 600px ;">
+        <fieldset style="margin: 0px 600px ;">
         <legend>Book Information: </legend>
 
         <label for="thumbnail">Book Thumbnail:</label>
@@ -76,10 +206,10 @@
         <br>
         <p style="color:red"><?php echo $thumbnailErr; ?></p>
 
-        <label for="bookId">Book Id:</label>
-        <input type="text" name="bookId" id="bookId" value="<?php echo $bookId;?>"disabled>
+       <label for="id">Book Id:</label>
+        <input type="text" name="id" id="id" value="<?php echo $id;?>">
         <br>
-        <p style="color:red"><?php echo $bookIdErr; ?></p>
+        <p style="color:red"><?php echo $idErr; ?></p>
 
         <label for="booktitle">Book Title:</label>
         <input type="text" name="booktitle" id="booktitle" value="<?php echo $booktitle;?>">
@@ -101,12 +231,17 @@
         <br>
         <p style="color:red"><?php echo $bookeditionErr; ?></p>
 
+        <label for="bookprice">Book Price:</label>
+        <input type="text" name="bookprice" id="bookprice" value="<?php echo $bookprice ?>">
+        <br>
+        <p style="color:red"><?php echo $bookpriceErr; ?></p>
 
       </fieldset>
       <br>
       
-      <input type="submit" value="Update Book" class="updateBookBtn">
-      <input type="submit" value="Delete Book" class="deleteBookBtn">
+      <input type="submit" name="update" value="Update Book" class="updateBookBtn">
+
+      <input type="submit" name="delete" value="Delete Book" class="deleteBookBtn">
 
       </form>
       <br>

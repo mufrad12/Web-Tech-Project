@@ -2,9 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Update-Delete Book</title>
+    <title>Customer Order List</title>
   </head>
   <body>
+     <div class="header">
+      <?php include 'header.php';?>
+  </div>
 
     <center>
     <h1><u> Customer Order List</u></h1>

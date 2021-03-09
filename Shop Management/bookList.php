@@ -2,10 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Update-Delete Book</title>
+    <title>Book List</title>
   </head>
   <body>
-
+ <div class="header">
+      <?php include 'header.php';?>
+  </div>
+  
   	<center>
   	<h1>Book List</h1>
 
@@ -28,6 +31,11 @@
 
 </style>
 
+<?php
+$a="sherlock2.jpg";
+?>
+
+
  <table>
 
 
@@ -42,7 +50,7 @@
         </tr>
 
         <tr>
-                <td><img src="sherlock2.jpg" alt="The Adventures of Sherlock Holmes" width="200" height="200" ></td>
+                <td><img src="<?php echo $a ?>" alt="The Adventures of Sherlock Holmes" width="200" height="200" ></td>
                 <td>AAA11</td>
                 <td>The Adventures of Sherlock Holmes</td>
                 <td>Arthur Conan Doyle</td>
@@ -50,9 +58,6 @@
                 <td>1st Edition,October 14, 1892</td>
                 <td>TK. 750</td>
              
-
-
-
         </tr>
         <tr>
                 <td><img src="megh.jpeg" alt="মেঘপিওন" width="200" height="200" ></td>

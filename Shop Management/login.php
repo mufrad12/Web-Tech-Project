@@ -43,49 +43,49 @@ session_start();
         }
 
    while($line = fgets($file))
-        {
+				{
 
-                  //list($firstName,$lastName,$gender,$email,$userNameV,$passwordV,$recoveryEmail) = explode( ",", $line );
+	                //list($firstName,$lastName,$gender,$email,$userNameV,$passwordV,$recoveryEmail) = explode( ",", $line );
 
+	                $json_decoded_text = json_decode($line, true);
 
-                  $json_decoded_text = json_decode($line, true);
+	                print_r($json_decoded_text);
+	                echo "<br>";
 
-                  $userNameV= $json_decoded_text['userName'];
-                  $passwordV= $json_decoded_text['password'];
-          
-                  if($userNameV == $userName && $passwordV == $password)
-                  {
-                      $flag++;
-                      break;
-                  }       
-              }
+	                $userNameV= $json_decoded_text['userName'];
+	                $passwordV= $json_decoded_text['password'];
+	        
+	                if($userNameV == $userName && $passwordV == $password)
+	                {
+	                    $flag++;
+	                    break;
+	                }       
+            	}
 
-              if ($flag>0)
-              {
-                  $msg = "Logged in";
-                  echo $msg;
-                  echo "<br>";
-          
-                  $_SESSION['userNameV'] = $userName;
-                  $_SESSION['passwordV'] = $password;
-              
-                  echo "UserName: " . $_SESSION['userNameV'];
-                  echo "<br>";
-                  echo "Password is: " . $_SESSION['passwordV'];
-              }
-          
-              else
-              {
-                  $msg = "Login Denied!!!! Try again...";
-                  echo $msg;
-              }
+            	if ($flag>0)
+	            {
+	                $msg = "Logged in";
+	                echo $msg;
+	                echo "<br>";
+	        
+	                $_SESSION['userNameV'] = $userName;
+	                $_SESSION['passwordV'] = $password;
+	            
+	                echo "UserName: " . $_SESSION['userNameV'];
+	                echo "<br>";
+	                echo "Password is: " . $_SESSION['passwordV'];
+	            }
+	        
+	            else
+	            {
+	                $msg = "Login Denied!!!! Try again...";
+	                echo $msg;
+	            }
+		}
 
-
-          }
-
-          session_unset();
-        session_destroy();
-        fclose($file);
+		session_unset();
+	    session_destroy();
+	    fclose($file);
 
 
 
@@ -96,7 +96,7 @@ session_start();
 
         <legend>Login Information</legend>
 
-        <label for="userName">UserName:</label>
+        <label for="userName">Username:</label>
         <input type="text" name="userName" id="userName" value="<?php echo $userName; ?>">
         <br>
         <p style="color:red"><?php echo $userNameErr; ?></p>

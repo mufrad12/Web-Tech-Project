@@ -5,7 +5,10 @@
     <title>Customer Order Search</title>
   </head>
   <body>
-  <center>
+  	 <div class="header">
+      <?php include 'header.php';?>
+  </div>
+
     <h1>Search Customer Order</h1>
 
     <?php
@@ -36,6 +39,6 @@
 
     </form>
     <br>
-    </center>
+
     </body>
 </html>

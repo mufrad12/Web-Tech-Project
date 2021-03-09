@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Sign Up</title>
 </head>
 <body>
 <center>
+
+
 	<h1>Sign Up</h1>
 	
 	<?php
@@ -130,51 +133,28 @@
 
 		</fieldset>
 			<br>
-
-			<input type="submit" value="Submit">
-
-			</form>
-			<br>
-
-			<?php
-
-			if($shopName != "" && $shopAddress != "" && $userName != "" && $id != "" && $email != "" && $password != "" && $confirmpass != "")
-			{
-		
-				$arr1 = array('shopName' => $shopName, 'shopAddress' => $shopAddress, 'userName' => $userName, 'id' => $id, 'email' => $email, 'password' =>  $password, 'confirmpass' => $confirmpass);
-
-	    		$json_encoded_text = json_encode($arr1); 
-
-	    		$file1 = fopen("registrationData.txt", "w");
-			    fwrite($file1, $json_encoded_text);
-
-			    fclose($file1);
-
-			}
-
-			$file2 = fopen("registrationData.txt", "r");
-	        $read = fread($file2, filesize("registrationData.txt"));
-	        fclose($file2);
-
-			$json_decoded_text = json_decode($read, true);
-
-	        echo $json_decoded_text['shopName'];
-	        echo "<br>";
-	        echo $json_decoded_text['shopAddress'];
-	        echo "<br>";
-	        echo $json_decoded_text['userName'];
-	        echo "<br>";
-	        echo $json_decoded_text['id'];
-	        echo "<br>";
-	        echo $json_decoded_text['email'];
-	        echo "<br>";
-	        echo $json_decoded_text['password'];
-	        echo "<br>";
-	        echo $json_decoded_text['confirmpass'];
-	        echo "<br>";
 			
-			?>
-		</center>
+			 <input type="submit" value="Add" class="addAdminBtn"  style="margin: 0% 40%;">>
 
+	      </form>
+	      <br>
+ <?php
+
+				if($shopName != "" && $shopAddress != "" && $id != "" && $userName != "" && $email != "" && $password != "" && $confirmpass != "" )
+				{
+			
+					$arr1 = array('shopName' => $shopName, 'shopAddress' => $shopAddress, 'id' => $id,'userName' => $userName, 'email' => $email, 'password' =>  $password, 'confirmpass' => $confirmpass);
+
+		    		$json_encoded_text = json_encode($arr1); 
+
+		    		$file1 = fopen("registrationData.txt", "a");
+				    fwrite($file1, $json_encoded_text);
+				    fwrite($file1, "\n");
+
+				    fclose($file1);
+				}
+			?>
+
+		</center>
     </body>
 </html>
