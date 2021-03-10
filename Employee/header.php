@@ -25,8 +25,8 @@
 					</ul>
 				</li>
 				<li><a href="#">Check Transaction History</a></li>
-				<li><a href="support.php">Support</a></li>
-				<li><a href="#">Logout</a></li>
+				<li><a href="#">Income Statement</a></li>
+				<li><a href="login.php">Logout</a></li>
 			</ul>
 		</div>
 	</div>
