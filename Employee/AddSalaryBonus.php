@@ -5,6 +5,9 @@
     <title>Update Salary and Festival Bonus</title>
   </head>
   <body>
+  <div class="header">
+      <?php include 'header.php';?>
+  </div>
   	<center>
   		
 	    <h1>Update Salary and Festival Bonus</h1>
@@ -94,6 +97,10 @@
 			
 			?>
 		</center>
+
+	<div class="footer">
+    <?php include 'footer.php';?>
+    </div>
 
     </body>
 </html>

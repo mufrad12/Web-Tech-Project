@@ -6,6 +6,10 @@
  </head>
  <center>
 <body>
+ 
+ <div class="header">
+      <?php include 'header.php';?>
+  </div>
 <h1>All Employee's Salary and Festival Bonus</h1>
 <br><br><br>
 
@@ -20,6 +24,9 @@ while(! feof($file))
 fclose($file);
 ?>
 
+  <div class="footer">
+      <?php include 'footer.php';?>
+  </div>
 </body>
  </center>
 </html>
