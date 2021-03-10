@@ -17,7 +17,7 @@
       $srcAErr = $shopNameErr = $shopAddressErr = $idErr = $userNameErr=  $emailErr = $passwordErr= $confirmpassErr="";
 
 
-		$srcA = "";
+		    $srcA = "";
         $shopName = ""; 
         $shopAddress = "";
         $id = "";
@@ -26,7 +26,7 @@
         $password= "";
         $confirmpass= "";
         $flag = 0;
-	    $searchKey = "";
+	      $searchKey = "";
 
 	    if(isset($_POST['src'])){
 	      	if($_SERVER["REQUEST_METHOD"] == "POST"){
