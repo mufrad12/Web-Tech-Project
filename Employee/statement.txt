@@ -1,0 +1,2 @@
+{"date":"2021-03-11","expenditure":"Salary of Akkas","ammount":"-33450"}
+{"date":"2021-03-12","expenditure":"Buying Furniture","ammount":"-2000"}
