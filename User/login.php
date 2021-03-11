@@ -45,9 +45,6 @@ session_start();
    while($line = fgets($file))
         {
 
-                  //list($firstName,$lastName,$gender,$email,$userNameV,$passwordV,$recoveryEmail) = explode( ",", $line );
-
-
                   $json_decoded_text = json_decode($line, true);
 
                   $userNameV= $json_decoded_text['userName'];
