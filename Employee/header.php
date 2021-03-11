@@ -25,7 +25,12 @@
 					</ul>
 				</li>
 				<li><a href="#">Check Transaction History</a></li>
-				<li><a href="#">Income Statement</a></li>
+				<li><a href="#">Income Statement</a>
+				<ul>
+				    <li><a href="AddStatement.php">Add Statement</a></li>
+					<li><a href="ShowStatement.php">Show Statement</a></li>
+				</ul>
+				</li>
 				<li><a href="login.php">Logout</a></li>
 			</ul>
 		</div>
