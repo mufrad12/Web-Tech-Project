@@ -12,11 +12,12 @@
 
 
 <?php
-		$nameErr = $numberErr= $emailErr="";
+		$nameErr = $numberErr= $emailErr= $subjectErr="";
 
 		$name = ""; 
 		$number = ""; 
 		$email = "";
+		$subject="";
 
 
 		if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -43,7 +44,17 @@
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
 				{ $emailErr = "Invalid email format"; }
 		         }
+
+	        if(isset($_POST['subject'])) {
+				$subjectErr = "Please fill up the comments properly";
+			}
+			else {
+				$subject = $_POST['subject'];
+			}
+
 		     }
+
+
 
 	?>
 
@@ -72,9 +83,12 @@
 
 			<textarea name="subject" rows="7" cols="40" style="width:650px;margin-left: 50px;vertical-align: middle;" 
 			value="<?php echo $subject; ?>" >
-
-
 			</textarea>
+
+			<p style="color:red"><?php echo $subjectErr; ?></p>
+
+
+			
 			<br>
             <br>
 			<input type="submit" value="Submit" style="width:100px;margin-left: 125px;vertical-align: middle;">
@@ -84,9 +98,26 @@
 	<br>
       <?php
 
-         if ($name!=""  && $number!="" &&  $email!="" )
+         if ($name!=""  && $number!="" &&  $email!="" &&  $subject!="")
 				{ echo "<b> The form is submitted </b> ";}
 		   ?>
+   <?php
 
+      if ($name!=""  && $number!="" &&  $email!=""&&  $subject!="")
+      {
+    
+        $arr1 = array('name' => $name, 'number' => $number, 'email' => $email, 
+        	'subject' => $subject
+        );
+
+          $json_encoded_text = json_encode($arr1); 
+            
+            $file1 = fopen("supportShop.txt", "a");
+            fwrite($file1, $json_encoded_text);
+            fwrite($file1, "\n");
+
+            fclose($file1);
+        }
+      ?>
 		</body>
 </html>

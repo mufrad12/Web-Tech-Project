@@ -11,8 +11,8 @@
     <h1>Update and Delete Profile</h1>
 
     <?php
-        $firstNameErr = $lastNameErr = $genderErr =  $dobErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
-
+      $firstNameErr = $lastNameErr = $genderErr =  $dobErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
+    
       $firstName = ""; 
       $lastName = "";
       $gender = "";
@@ -22,88 +22,117 @@
       $userName= "";
       $password= "";
       $conPassword = "";
+    
 
-       if($_SERVER["REQUEST_METHOD"] == "POST") {
+      if((isset($_POST['update']))||(isset($_POST['delete'])))
+        {
 
-        if(empty($_POST['fname'])) {
-          $firstNameErr = "Please fill up the first name properly";
-        }
-        else {
-          $firstName = $_POST['fname'];
-        }
+         if($_SERVER["REQUEST_METHOD"] == "POST") 
+         {
+        
+          if(empty($_POST['firstName'])) 
+          {
+        $firstNameErr = "Please fill up the first name properly";
+      }
+      else {
+        $firstName = $_POST['firstName'];
+      }
 
-        if(empty($_POST['lname'])) {
-          $lastNameErr = "Please fill up the last name properly";
-        }
-        else {
-          $lastName = $_POST['lname'];
-        }
+      if(empty($_POST['lastName'])) {
+        $lastNameErr = "Please fill up the last name properly";
+      }
+      else {
+        $lastName = $_POST['lastName'];
+      }
 
-        if(empty($_POST['dob'])) {
-          $dobErr = "Please fill up the date of birth properly";
-        }
-        else {
-          $dob = $_POST['dob'];
-        }
-
-        if(empty($_POST['email'])) {
-          $emailErr = "Please enter an email";
-        }
-        else {
-          $email = $_POST['email'];
-
-          if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
-            { 
-              $emailErr = "Invalid email format"; 
-            }
-        }
-
-        if(empty($_POST['id'])) {
+            if(empty($_POST['id'])) {
         $idErr = "Please fill up the id number properly";
       }
       else {
         $id = $_POST['id'];
       }
 
-        if(empty($_POST['uname'])) {
-          $userNameErr = "Please fill up the username properly";
-          }
-        else {
-          $userName = $_POST['uname'];
+       if(empty($_POST['email'])) {
+        $emailErr = "Email is required";
+      }
+      else {
+        $email = $_POST['email'];
+      
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+        { $emailErr = "Invalid email format"; }
+             }
+
+       if(empty($_POST['userName'])) {
+        $userNameErr = "Please fill up the userName properly";
+      }
+      else {
+        $userName = $_POST['userName'];
+      }
+           if(empty($_POST['password'])) {
+        $passwordErr = "Please fill up the password properly";
+      }
+      else {
+        $password = $_POST['password'];
+      }
+           if(empty($_POST['conPassword'])) {
+        $conPasswordErr = "Please fill up the password properly";
+      }
+      else {
+        $conPassword = $_POST['conPassword'];
+      }
+      if($conPassword!==$conPassword)
+      {
+        $conPasswordErr="Password don't match";
+      }
+
+    }
+
+
+          $f1 = fopen("login.txt", "r");
+          $data = fread($f1, filesize("login.txt"));
+          fclose($f1);
+          $data_after_newline_delimeter = explode("\n", $data);
+          $arr1 = array();
+
+        if(isset($_POST['update']))
+    {
+
+      $f2 = fopen("login.txt", "w");
+      for($j = 0; $j < count($arr1); $j++) {
+        $json_encoded = json_encode($arr1[$j]);
+        fwrite($f2, $json_encoded . "\n");
+      }
+      fclose($f2);
+
+    }
+
+    if(isset($_POST['delete']))
+    {
+
+      for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
+        $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
+        if($json_decoded['userName'] !== $searchKey) {
+          array_push($arr1, $json_decoded);
         }
 
-        if(empty($_POST['password'])) {
-          $passwordErr = "Please fill up the password properly";
-        }
-        else {
-          $password = $_POST['password'];
-        }
+      }
+      $f2 = fopen("login.txt", "w");
+      for($j = 0; $j < count($arr1); $j++) {
+        $json_encoded = json_encode($arr1[$j]);
+        fwrite($f2, $json_encoded . "\n");
+      }
+      fclose($f2);
 
-        if(empty($_POST['conPassword'])) {
-        $conPasswordErr = "Recovery Email is required";
-        }
-        else {
-          $conPassword = $_POST['conPassword'];
-        
-             if (!($conPassword == $password)) 
-          { $conPasswordErr = "Password not matched"; }
-        }
+    }
 
-        if (empty($_POST['gender'])) {
-               $genderErr = "Gender is required"; 
-        } 
-
-        else { 
-          $gender = $_POST['gender']; 
-        }
-        }
-
+  
+  }
     ?>
     
 
     </form>
     
-
+      <br>
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" align="center">
       <fieldset style="margin: 0px 700px ;">
@@ -153,11 +182,11 @@
         <br>
 
         <label for="id">Id :</label>
-       <input type="text" name="id" id="id" value="<?php echo $id; ?>"disabled> 
+       <input type="text" name="id" id="id" value="<?php echo $id; ?>"> 
        <p style="color:red"><?php echo $idErr; ?></p>
 
         <label for="uname">UserName:</label>
-        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>" disabled>
+        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
         <br>
         <p style="color:red"><?php echo $userNameErr; ?></p>
 
@@ -179,7 +208,7 @@
 
       </form>
       <br>
-	  <div class="footer">
+    <div class="footer">
       <?php include 'footer.php';?>
       </div>
     </body>
