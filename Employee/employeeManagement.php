@@ -11,8 +11,8 @@
     <h1>Update and Delete Profile</h1>
 
     <?php
-       $srcAErr = $firstNameErr = $lastNameErr = $genderErr =  $dobErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
-      $srcA = "";
+      $firstNameErr = $lastNameErr = $genderErr =  $dobErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
+    
       $firstName = ""; 
       $lastName = "";
       $gender = "";
@@ -22,47 +22,8 @@
       $userName= "";
       $password= "";
       $conPassword = "";
-      $flag = 0;
-    $searchKey = "";
+    
 
-
-      if(isset($_POST['src'])){
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-        if(empty($_POST['srcA'])) {
-          $srcAErr = "Please Write Your userName";
-        }
-        else {
-          $srcA = $_POST['srcA'];
-          }
-        }
-
-      $f1 = fopen("login.txt", "r");
-      $data = fread($f1, filesize("login.txt"));
-      fclose($f1);
-      $data_after_newline_delimeter = explode("\n", $data);
-      $arr1 = array();
-      $searchKey = $srcA;
-
-      for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
-        $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
-        if($json_decoded['userName'] === $searchKey)
-        {
-          echo $srcA." found";
-          $flag=1;
-          $firstName = $json_decoded['firstName']; 
-          $lastName = $json_decoded['lastName']; 
-          $email = $json_decoded['email']; 
-          $id = $json_decoded['id']; 
-          $userName= $json_decoded['userName']; 
-          $password= $json_decoded['password']; 
-          $conPassword = $json_decoded['conPassword']; 
-        }
-          }
-          if($flag==0)
-          echo $srcA." not found";
-
-      }
       if((isset($_POST['update']))||(isset($_POST['delete'])))
         {
 
@@ -132,33 +93,9 @@
           fclose($f1);
           $data_after_newline_delimeter = explode("\n", $data);
           $arr1 = array();
-          $searchKey = $userName;
 
         if(isset($_POST['update']))
     {
-
-      for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
-        $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
-        if($json_decoded['userName'] === $searchKey)
-        {
-
-          $arr2 = array(
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'email' => $email,
-            'id' => $json_decoded['id'],
-            'userName' => $json_decoded['userName'],
-            'password' => $password,
-            'conPassword' => $conPassword
-          );
-          array_push($arr1, $arr2);
-        }
-
-        else
-        {
-          array_push($arr1, $json_decoded);
-        }
-      }
 
       $f2 = fopen("login.txt", "w");
       for($j = 0; $j < count($arr1); $j++) {
@@ -195,15 +132,6 @@
 
     </form>
     
-     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-
-     <label for="srcA">User ID:</label>
-        <input type="search" name="srcA" id="srcA" value="<?php echo $srcA;?>" placeholder="Enter your user ID">
-
-        <input type="submit" name="src" value="Search" class="srcAserBtn">
-        <p style="color:red"><?php echo $srcAErr; ?></p>
-
-      </form>
       <br>
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" align="center">
@@ -254,11 +182,11 @@
         <br>
 
         <label for="id">Id :</label>
-       <input type="text" name="id" id="id" value="<?php echo $id; ?>"disabled> 
+       <input type="text" name="id" id="id" value="<?php echo $id; ?>"> 
        <p style="color:red"><?php echo $idErr; ?></p>
 
         <label for="uname">UserName:</label>
-        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>" disabled>
+        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
         <br>
         <p style="color:red"><?php echo $userNameErr; ?></p>
 
