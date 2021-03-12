@@ -45,7 +45,11 @@ session_start();
    while($line = fgets($file))
         {
 
+
                   $json_decoded_text = json_decode($line, true);
+
+                  print_r($json_decoded_text);
+	              echo "<br>";
 
                   $userNameV= $json_decoded_text['userName'];
                   $passwordV= $json_decoded_text['password'];

@@ -173,36 +173,14 @@
 
           $json_encoded_text = json_encode($arr1); 
 
-          $file1 = fopen("registration.txt", "w");
+          $file1 = fopen("registration.txt", "a");
           fwrite($file1, $json_encoded_text);
+          fwrite($file1, "\n");
 
           fclose($file1);
 
       }
 
-      $file2 = fopen("registration.txt", "r");
-          $read = fread($file2, filesize("registration.txt"));
-          fclose($file2);
-
-      $json_decoded_text = json_decode($read, true);
-
-          echo $json_decoded_text['firstName'];
-          echo "<br>";
-          echo $json_decoded_text['lastName'];
-          echo "<br>";
-          echo $json_decoded_text['gender'];
-          echo "<br>";
-          echo $json_decoded_text['dob'];
-          echo "<br>";
-          echo $json_decoded_text['email'];
-          echo "<br>";
-          echo $json_decoded_text['userName'];
-          echo "<br>";
-          echo $json_decoded_text['password'];
-          echo "<br>";
-          echo $json_decoded_text['conPassword'];
-          echo "<br>";
-          
       ?>
 
     </body>
