@@ -8,28 +8,6 @@
 <body>
 
 
-<style> table, th, td 
-     {
-      border: 1px solid black;
-
-      border-collapse: collapse;
-      
-      }
-    th, td {
-      padding: 15px;
-         }
-
-         th {
-  text-align: center;
-           }
-
-           td {
-  text-align: center;
-        }
-
-</style>
-
-
 
  
  <div class="header">
@@ -83,6 +61,46 @@ $a="abcd";
   <div class="footer">
       <?php include 'footer.php';?>
   </div>
+
+
+  <style> table, th, td 
+     {
+      border: 1px solid black;
+
+      border-collapse: collapse;
+      
+      }
+    th, td {
+      padding: 15px;
+         }
+
+         th {
+  text-align: center;
+           }
+
+           td {
+  text-align: center;
+        }
+        .footer{
+          color: white;
+          height: 7%;
+          background-color: #83888A;
+        }
+        legend{
+              text-align: center;
+              font-weight: bold;
+            }
+            h1{
+              text-align: center;
+            }
+       
+
+</style>
+
+
+
+
+
 </body>
  </center>
 </html>

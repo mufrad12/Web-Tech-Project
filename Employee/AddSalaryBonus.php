@@ -155,7 +155,27 @@
 
     </div>
 
+<style>
+        .footer{
+          color: white;
+          height: 7%;
+          background-color: #83888A;
+        }
+        legend{
+              text-align: center;
+              font-weight: bold;
+            }
+            h1{
+              text-align: center;
+            }
+       
 
+</style>
+
+
+
+
+</style>
 
     </body>
 </html>
