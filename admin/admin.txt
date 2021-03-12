@@ -1,4 +1,4 @@
-{"firstName":"amdd","lastName":"sdqg","gender":"female","dob":"2021-03-16","email":"shatin.hasan73@gmail.com","userName":"admin","password":"0000","conPassword":"0000"}
-{"firstName":"amsd","lastName":"sjdg","gender":"female","dob":"2021-03-16","email":"shatin.hasan73@gmail.com","userName":"admin2","password":"0000","conPassword":"0000"}
-{"firstName":"amhd","lastName":"sdweg","gender":"female","dob":"2021-03-16","email":"shatin.hasan73@gmail.com","userName":"admin3","password":"0000","conPassword":"0000"}
-{"firstName":"amld","lastName":"sdhg","gender":"female","dob":"2021-03-16","email":"shatin.hasan73@gmail.com","userName":"admin4","password":"0000","conPassword":"0000"}
+{"firstName":"Mufrad","lastName":"Mustavi","gender":"male","dob":"2021-03-08","email":"nobobisshatin@gmail.com","id":"19-38712-3","userName":"admin4","password":"0000","conPassword":"0000"}
+{"firstName":"Nobobi","lastName":"Shatin","gender":"male","dob":"2021-03-08","email":"nobobisshatin@gmail.com","id":"19-38712-3","userName":"admin5","password":"0000","conPassword":"0000"}
+{"firstName":"Khayrul","lastName":"Hasan","gender":"male","dob":"2021-03-25","email":"nobobi.shatin@gmail.com","id":"19-38712-3","userName":"admin","password":"0000","conPassword":"0000"}
+{"firstName":"Selina","lastName":"Akter","gender":"female","dob":"2021-03-22","email":"18-38712-3@student.aiub.edu","id":"19-38712-3","userName":"admin6","password":"0000","conPassword":"0000"}
