@@ -12,7 +12,7 @@
   </div>
 
 
-  	<center>
+  <div class="bg">
   		
 
 	    <h1>Add In Statements </h1>
@@ -30,7 +30,7 @@
 	      $ammount= "";
 
 
-
+	       if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	        if(empty($_POST['date'])) {
 	          $dateErr = "Please fill up the date properly";
@@ -61,7 +61,7 @@
 	          $ammount = $_POST['ammount'];
 	        }
 
-
+	    }
 
 	    ?>
 
@@ -157,7 +157,7 @@
 
 
 
-		</center>
+  </div>
 
 
 
@@ -168,22 +168,53 @@
 
     </div>
 
-<style>
-        .footer{
-          color: white;
-          height: 7%;
-          background-color: #83888A;
-        }
-        legend{
-              text-align: center;
-              font-weight: bold;
-            }
-            h1{
-              text-align: center;
-            }
-       
+	<style>
+			body, html {
+				height: 90%;
+				margin: 0;
 
-</style>
+				}
+
+				.bg {
+					min-height: 100%; 
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+					text-align: center;
+					
+				}
+				.footer{
+					color: white;
+					height: 7%;
+					background-color: #83888A;
+				}
+				legend{
+		          text-align: center;
+		          font-weight: bold;
+		        }
+		        h1{
+		        	text-align: center;
+		        }
+
+	       table, th, td 
+     {
+      border: 1px solid black;
+      border-collapse: collapse;
+      margin: 0% 40%;
+    
+      }
+    th, td {
+      padding: 15px;
+         }
+
+         th {
+  text-align: center;
+           }
+
+           td {
+  text-align: center;
+        }
+		</style>
 
     </body>
 </html>
