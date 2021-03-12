@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Search an Employee</title>
+    <title>Search User</title>
   </head>
   <body>
     <div class="header">
@@ -11,21 +11,21 @@
     
     <div class="bg">
 
-    <h1>Search an Employee</h1>
+    <h1>Search User</h1>
 
     <?php
-      $srcEErr = "" ;
+      $srcUErr = "" ;
 
-      $srcE = "";
+      $srcU = "";
       
 
        if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        if(empty($_POST['srcE'])) {
-          $srcEErr = "Please fill up the employee username";
+        if(empty($_POST['srcU'])) {
+          $srcUErr = "Please fill up the User username";
         }
         else {
-          $srcE = $_POST['srcE'];
+          $srcU = $_POST['srcU'];
         }
 
        }
@@ -33,11 +33,11 @@
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 
-      <label for="srcE">Search Employee:</label>
-      <input type="search" name="srcE" id="srcE" value="<?php echo $srcE;?>">
+      <label for="srcU">Search User:</label>
+      <input type="search" name="srcU" id="srcU" value="<?php echo $srcU;?>">
 
-      <input type="submit" value="Search" class="srcEmployeeBtn">
-      <p style="color:red"><?php echo $srcEErr; ?></p>
+      <input type="submit" value="Search" class="srcUmployeeBtn">
+      <p style="color:red"><?php echo $srcUErr; ?></p>
 
     </form>
     <br>
@@ -68,5 +68,5 @@
         background-color: #83888A;    }
     </style>
 
-    </body>
+  </body>
 </html>

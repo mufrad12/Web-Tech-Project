@@ -9,8 +9,8 @@
 	<div class="menu">
 		<div class="mid">
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Products</a></li>
+				<li><a href="login.php">Home</a></li>
+				<li><a href="http://localhost/project/bookList.php">Products</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Admin</a>
 					<ul>
@@ -38,7 +38,11 @@
 						<li><a href="userUD.php">Update/delete User</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Accounts</a></li>
+				<li><a href="#">Accounts</a>
+					<ul>
+						<li><a href="ShowStatement.php">Income Statement</a></li>
+					</ul>
+				</li>
 				<li><a href="#">Order</a></li>
 				<li><a href="#">Approval</a></li>
 				<li><a href="profileUD.php">Profile</a></li>

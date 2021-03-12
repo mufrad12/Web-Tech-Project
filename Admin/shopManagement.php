@@ -2,20 +2,16 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Shop Update/Delete</title>
+    <title>Shop Management</title>
   </head>
   <body>
-    <div class="header">
-      <?php include 'header.php';?>
-    </div>
 
-    <div class="bg">
-
-    <h1>Shop Update/Delete</h1>
+    <h1>Shop Management</h1>
 
     <?php
-      $nameErr = $addressErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "";
+      $srcSErr = $nameErr = $addressErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "";
 
+      $srcS = "";
       $name = ""; 
       $address = "";
       $email = "";
@@ -23,6 +19,17 @@
       $userName= "";
       $password= "";
       $conPassword = "";
+
+       if($_SERVER["REQUEST_METHOD"] == "GET"){
+
+        if(empty($_GET['srcS'])) {
+          $srcSErr = "Please fill up the Shop username";
+        }
+        else {
+          $srcS = $_GET['srcS'];
+        }
+
+       }
       
 
       if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -88,8 +95,20 @@
 
     ?>
 
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET">
+
+      <label for="srcS">Search Shop:</label>
+      <input type="search" name="srcS" id="srcS" value="<?php echo $srcS;?>">
+
+      <input type="submit" value="Search" class="srcSmployeeBtn">
+      <p style="color:red"><?php echo $srcSErr; ?></p>
+
+    </form>
+    <br>
+
+
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-      <fieldset style="margin: 0% 40%;">
+      <fieldset>
         <legend>Basic Information: </legend>
 
         <label for="name">Shop Name:</label>
@@ -110,7 +129,7 @@
       </fieldset>
       <br>
      
-      <fieldset style="margin: 0% 40%;">
+      <fieldset>
 
         <legend>Shop Account Information: </legend>
 
@@ -137,45 +156,11 @@
       </fieldset>
       <br>
       
-      <input type="submit" value="Update" class="updateShopBtn" style="margin-left: 40%;">
+      <input type="submit" value="Update" class="updateShopBtn">
       <input type="submit" value="Delete" class="deleteShopBtn">
 
       </form>
       <br>
-    </div>
-
-      <div class="footer">
-        <?php include 'footer.php';?>
-      </div>
-      
-
-      <style>
-        body, html {
-        height: 90%;
-        margin: 0;
-        color: white;
-        }
-
-        .bg {
-          background-image: url('http://sfwallpaper.com/images/background-wallpaper-for-website-1.jpg');
-          height: 100%; 
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
-        .footer{
-          color: white;
-          height: 7%;
-          background-color: #83888A;
-        }
-        legend{
-          text-align: center;
-          font-weight: bold;
-        }
-        h1{
-          text-align: center;
-        }
-      </style>
 
     </body>
 </html>
