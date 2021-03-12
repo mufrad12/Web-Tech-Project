@@ -1,0 +1,4 @@
+{"firstName":"Mufrad","lastName":"Mustavi","gender":"male","dob":"2021-03-08","email":"nobobisshatin@gmail.com","id":"19-38712-3","userName":"admin4","password":"0000","conPassword":"0000"}
+{"firstName":"Nobobi","lastName":"Shatin","gender":"male","dob":"2021-03-08","email":"nobobisshatin@gmail.com","id":"19-38712-3","userName":"admin5","password":"0000","conPassword":"0000"}
+{"firstName":"Khayrul","lastName":"Hasan","gender":"male","dob":"2021-03-25","email":"nobobi.shatin@gmail.com","id":"19-38712-3","userName":"admin","password":"0000","conPassword":"0000"}
+{"firstName":"Selina","lastName":"Akter","gender":"female","dob":"2021-03-22","email":"18-38712-3@student.aiub.edu","id":"19-38712-3","userName":"admin6","password":"0000","conPassword":"0000"}
