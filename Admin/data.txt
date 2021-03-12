@@ -1,5 +1,0 @@
-{"userName":"admin","password":"510","firstName":"zta"}
-{"userName":"admin2","password":"510","firstName":"zta"}
-{"userName":"admin3","password":"510","firstName":"zta"}
-{"userName":"admin4","password":"510","firstName":"zta"}
-{"userName":"admin5","password":"510","firstName":"zta"}
