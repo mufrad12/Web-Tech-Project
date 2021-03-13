@@ -5,7 +5,9 @@
     <title>Contact Us</title>
   </head>
   <body>
-  	
+<div class="header">
+      <?php include 'header.php';?>
+  </div>
 <h1>Contact Us</h1>
 
 
