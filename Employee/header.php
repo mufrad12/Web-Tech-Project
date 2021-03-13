@@ -15,7 +15,7 @@
 					<ul>
 						<li><a href="AddSalaryBonus.php">Add Salary/Festival Bonus</a></li>
 						<li><a href="ShowSalaryBonus.php">Show Salary/Festival Bonus</a></li>
-						<li><a href="SalaryReport.php">Send Salary Report to Admin</a></li>
+						
 					</ul>
 				</li>
 				<li><a href="#">Customer Order Information</a>

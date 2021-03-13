@@ -1,3 +1,0 @@
-{"userName":"emp2","month":"2021-01","salary":"23000"}
-{"userName":"emp2","month":"2021-02","salary":"23000"}
-{"userName":"emp2","month":"2021-03","salary":"25000"}

@@ -18,8 +18,8 @@
       <?php
     
 
-        $f1 = fopen("cart.txt", "r");
-        $data = fread($f1, filesize("cart.txt"));
+        $f1 = fopen("..\User\cart.txt", "r");
+        $data = fread($f1, filesize("..\User\cart.txt"));
         fclose($f1);
 
         $data_after_newline_delimeter = explode("\n", $data);
