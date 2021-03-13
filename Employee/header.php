@@ -9,13 +9,13 @@
 	<div class="menu">
 		<div class="mid">
 			<ul>
-				<li><a href="#">Home</a></li>
+				
 				<li><a href="employeeManagement.php">Profile</a></li>
 				<li><a href="#">Salary/Festival Bonus</a>
 					<ul>
 						<li><a href="AddSalaryBonus.php">Add Salary/Festival Bonus</a></li>
 						<li><a href="ShowSalaryBonus.php">Show Salary/Festival Bonus</a></li>
-						<li><a href="#">Send Salary Report to Admin</a></li>
+						<li><a href="SalaryReport.php">Send Salary Report to Admin</a></li>
 					</ul>
 				</li>
 				<li><a href="#">Customer Order Information</a>
@@ -36,10 +36,18 @@
 					<li><a href="ShowStatement.php">Show Statement</a></li>
 				</ul>
 				</li>
+				<li><a href="..\Shop Management\about.php">About</a></li>
 				<li><a href="login.php">Logout</a></li>
 			</ul>
 		</div>
 	</div>
+
+	<style>
+		.mid{
+			text-align: center;
+		
+		}
+	</style>
 
 </body>
 </html>

@@ -260,7 +260,7 @@ session_start();
           <p style="color:red"><?php echo $idErr; ?></p>
 
           <label for="uname">UserName:</label>
-          <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>" >
+          <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>" disabled>
           <br>
           <p style="color:red"><?php echo $userNameErr; ?></p>
 

@@ -29,9 +29,9 @@
 			            <tr>
 			                <th>Product Id</th>
 
-			                <th>Shop Id</th>
+			                <th>Shop Username</th>
 
-			                <th>User Id</th>
+			                <th>User Username</th>
 
 			                <th>Ammount</th>
 			            </tr>';
@@ -44,9 +44,9 @@
 
 			      echo "<td>" . $json_decoded['productId'] . "</td>";
 
-			      echo "<td>" . $json_decoded['shopId'] . "</td>";
+			      echo "<td>" . $json_decoded['shopUName'] . "</td>";
 
-			      echo "<td>" . $json_decoded['userId'] . "</td>";
+			      echo "<td>" . $json_decoded['userUName'] . "</td>";
 
 			      echo "<td>" . $json_decoded['ammount'] . "</td>";
 

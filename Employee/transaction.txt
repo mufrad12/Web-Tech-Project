@@ -1,1 +1,2 @@
-{"productId":"P1","shopId":"S1","userId":"U1","ammount":"75"}
+{"productId":"P1","shopUName":"Shoppy","userUName":"Siam","ammount":"500"}
+{"productId":"P2","shopUName":"Boighor","userUName":"Rasel","ammount":"320"}
