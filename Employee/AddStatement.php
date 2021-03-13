@@ -30,7 +30,8 @@
 	      $ammount= "";
 
 
-	       if($_SERVER["REQUEST_METHOD"] == "POST") {
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+
 
 	        if(empty($_POST['date'])) {
 	          $dateErr = "Please fill up the date properly";
@@ -61,9 +62,9 @@
 	          $ammount = $_POST['ammount'];
 	        }
 
-	    }
+	     }
 
-	    ?>
+	?>
 
 	    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	     
@@ -152,9 +153,7 @@
 
 			}
 			
-			?>
-
-
+		?>
 
 
   </div>
@@ -168,21 +167,23 @@
 
     </div>
 
+
+
 	<style>
-			body, html {
-				height: 90%;
-				margin: 0;
+				body, html {
+		        height: 90%;
+		        margin: 0;
+		        color: white;
+		        }
 
-				}
-
-				.bg {
-					min-height: 100%; 
-					background-position: center;
-					background-repeat: no-repeat;
-					background-size: cover;
-					text-align: center;
-					
-				}
+		        .bg {
+		          background-image: url('bg.jpg');
+		          min-height: 100%; 
+		          background-position: center;
+		          background-repeat: no-repeat;
+		          background-size: cover;
+		          text-align: center;
+		        }
 				.footer{
 					color: white;
 					height: 7%;
@@ -195,6 +196,9 @@
 		        h1{
 		        	text-align: center;
 		        }
+
+
+
 
 	       table, th, td 
      {
@@ -215,6 +219,8 @@
   text-align: center;
         }
 		</style>
+
+
 
     </body>
 </html>
