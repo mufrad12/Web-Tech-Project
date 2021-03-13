@@ -1,1 +1,0 @@
-{"shopName":"mufrad mustavi","shopAddress":"House-78,Road-12,Sector-13,Uttara","email":"mufrad12@gmail.com","id":"123","userName":"mufrad12","password":"123","confirmpass":"123"}

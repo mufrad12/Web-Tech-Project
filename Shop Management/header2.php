@@ -1,12 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/styleHome.css">
+</head>
+<body>
+	<div class="menu">
+		<div class="mid">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="bookListHome.php">Products</a></li>
+				<li><a href="aboutHome.php">About</a></li>
+				<li><a href="shopSignup.php">Register</a></li>
+				<li><a href="login.php">Login</a></li>
+			</ul>
+		</div>
+	</div>
+  <style> 
 
 .mid {
 	position: relative;
-	width: 80%;
+	width: 35%;
 	margin: auto;
 }
 
 .menu {
 	background-color: #34495e;
+}
+
+.menue ul{
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .menu ul li {
@@ -53,3 +78,7 @@
 	transform: scale(1.5);
 	z-index: 999;
 }	 
+</style> 
+</body>
+
+</html>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,10 +14,11 @@
   </div>
 
     <div class="bg">
-  <center>
-    <h1>Shop Information</h1>
+
+    <h1>My Profile</h1>
  
     <?php
+    echo $_SESSION['userNameV'];
       $srcAErr = $shopNameErr = $shopAddressErr = $idErr = $userNameErr=  $emailErr = $passwordErr= $confirmpassErr="";
 
 
@@ -26,32 +31,20 @@
         $password= "";
         $confirmpass= "";
         $flag = 0;
-	      $searchKey = "";
+	      $searchKey = $_SESSION['userNameV'];
 
-	    if(isset($_POST['src'])){
-	      	if($_SERVER["REQUEST_METHOD"] == "POST"){
+	 
 
-	        if(empty($_POST['srcA'])) {
-	          $srcAErr = "Please fill up the book userName";
-	        }
-	        else {
-	          $srcA = $_POST['srcA'];
-	        }
-	        
-	       }
-
-	        $f1 = fopen("registrationData.txt", "r");
-			$data = fread($f1, filesize("registrationData.txt"));
+	    $f1 = fopen("shopData.txt", "r");
+			$data = fread($f1, filesize("shopData.txt"));
 			fclose($f1);
 			$data_after_newline_delimeter = explode("\n", $data);
 			$arr1 = array();
-			$searchKey = $srcA;
 
 			for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
 				$json_decoded = json_decode($data_after_newline_delimeter[$i], true);
 				if($json_decoded['userName'] === $searchKey)
 				{
-					echo $srcA." found";
 					$flag=1;
 					$shopName = $json_decoded['shopName']; 
 					$shopAddress = $json_decoded['shopAddress']; 
@@ -61,9 +54,6 @@
 					$password= $json_decoded['password']; 
 					$confirmpass = $json_decoded['confirmpass']; 
 				}
-	        }
-	        if($flag==0)
-					echo $srcA." not found";
 	    }
 
 
@@ -131,8 +121,8 @@
     }
 
 
-	    $f1 = fopen("registrationData.txt", "r");
-		$data = fread($f1, filesize("registrationData.txt"));
+	  $f1 = fopen("shopData.txt", "r");
+		$data = fread($f1, filesize("shopData.txt"));
 		fclose($f1);
 		$data_after_newline_delimeter = explode("\n", $data);
 		$arr1 = array();
@@ -164,7 +154,7 @@
 				}
 			}
 
-			$f2 = fopen("registrationData.txt", "w");
+			$f2 = fopen("shopData.txt", "w");
 			for($j = 0; $j < count($arr1); $j++) {
 				$json_encoded = json_encode($arr1[$j]);
 				fwrite($f2, $json_encoded . "\n");
@@ -180,10 +170,11 @@
 				$json_decoded = json_decode($data_after_newline_delimeter[$i], true);
 				if($json_decoded['userName'] !== $searchKey) {
 					array_push($arr1, $json_decoded);
+          header("Location: login.php");
 				}
 
 			}
-			$f2 = fopen("registrationData.txt", "w");
+			$f2 = fopen("shopData.txt", "w");
 			for($j = 0; $j < count($arr1); $j++) {
 				$json_encoded = json_encode($arr1[$j]);
 				fwrite($f2, $json_encoded . "\n");
@@ -198,17 +189,7 @@
 
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 
-  	 <label for="srcA">Search Shop:</label>
-	      <input type="search" name="srcA" id="srcA" value="<?php echo $srcA;?>" placeholder="search here">
-
-	      <input type="submit" name="src" value="Search" class="srcAserBtn">
-	      <p style="color:red"><?php echo $srcAErr; ?></p>
-
-	    </form>
-	    <br>
-
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-    <fieldset style="margin: 0px 600px ;">
+    <fieldset style="margin: 0% 40%;">
       <legend> Basic Information :</legend>
 
        <label for="shopName">Shop Name :</label>
@@ -231,7 +212,7 @@
 
     </fieldset>
 
-    <fieldset style="margin: 0px 600px ;">
+    <fieldset style="margin: 0% 40%;">
       <legend> User Account Information :</legend>
 
        <label for="id">Id :</label>
@@ -255,19 +236,47 @@
         <label for="confirmpass">Re-Type Password :</label>
        <input type="password" name="confirmpass" id="confirmpass" value="<?php echo $confirmpass; ?>"> 
        <p style="color:red"><?php echo $confirmpassErr; ?></p>
-    
-       <br>
 
     </fieldset>
       <br>
 
- 
-    <input type="submit" name="update" value="Update Shop" class="updateShopBtn">
+ <input type="submit" name="update" value="Update" class="updateshopBtn" style="margin-left: 45%;">
+      <input type="submit" name="delete" value="Delete" class="deleteshopBtn">
 
-	<input type="submit" name="delete" value="Delete Shop" class="deleteShopBtn">
+      </form>
+      <br>
+    </div>
+      <div class="footer">
+        <?php include 'footer.php';?>
+      </div>
+      
+      <style>
+        body, html {
+        height: 90%;
+        margin: 0;
+        color: white;
+        }
 
+        .bg {
+          background-image: url('about3.jpg');
+          min-height: 100%; 
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .footer{
+          color: white;
+          height: 7%;
+          background-color: #83888A;
+        }
+        legend{
+              text-align: center;
+              font-weight: bold;
+            }
+            h1{
+              text-align: center;
+            }
+      </style>
 
-     </form>
- </center>
-</body>
+    </body>
 </html>

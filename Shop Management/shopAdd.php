@@ -2,13 +2,16 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Sign Up</title>
+	<title>Add Shop</title>
 </head>
 <body>
-<center>
+	<div class="header">
+  		<?php include 'header.php';?>
+	</div>
 
+	<div class="bg">
 
-	<h1>Sign Up</h1>
+	<h1>Add Shop</h1>
 	
 	<?php
 		$shopNameErr = $shopAddressErr = $idErr = $userNameErr=  $emailErr = $passwordErr= $confirmpassErr="";
@@ -80,8 +83,7 @@
 
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		
-		<!-- Input Text Field -->
-		<fieldset style="margin: 0px 600px ;">
+		<fieldset style="margin: 0% 40%;">
 			<legend> Basic Information :</legend>
 
 		   <label for="shopName">Shop Name :</label>
@@ -104,7 +106,7 @@
 
 		</fieldset>
 
-		 <fieldset style="margin: 0px 600px ;">
+		 <fieldset style="margin: 0% 40%;">
 			<legend> User Account Information :</legend>
 
 			<label for="id">Id :</label>
@@ -129,12 +131,10 @@
             <input type="password" name="confirmpass" id="confirmpass" value="<?php echo $confirmpass; ?>"> 
             <p style="color:red"><?php echo $confirmpassErr; ?></p>
     
-          <br>
-
-		</fieldset>
-			<br>
-			
-			 <input type="submit" value="Add" class="addAdminBtn"  style="margin: 0% 40%;">>
+          </fieldset>
+	      <br>
+	      
+	      <input type="submit" value="Add" class="addAdminBtn"  style="margin: 0% 40%;">
 
 	      </form>
 	      <br>
@@ -147,7 +147,7 @@
 
 		    		$json_encoded_text = json_encode($arr1); 
 
-		    		$file1 = fopen("registrationData.txt", "a");
+		    		$file1 = fopen("shopData.txt", "a");
 				    fwrite($file1, $json_encoded_text);
 				    fwrite($file1, "\n");
 
@@ -155,6 +155,39 @@
 				}
 			?>
 
-		</center>
+	<div>
+			<div class="footer">
+				<?php include 'footer.php';?>
+			</div>
+			
+
+			<style>
+				body, html {
+				height: 90%;
+				margin: 0;
+				color: white;
+				}
+
+				.bg {
+					background-image: url('about3.jpg');
+					min-height: 100%; 
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+				}
+				.footer{
+					color: white;
+					height: 7%;
+					background-color: #83888A;
+				}
+				legend{
+		          text-align: center;
+		          font-weight: bold;
+		        }
+		        h1{
+		        	text-align: center;
+		        }
+			</style>
+
     </body>
 </html>

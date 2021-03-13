@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,9 +12,10 @@
   	<div class="header">
       <?php include 'header.php';?>
   </div>
- <center>
+     
+    <div class="bg">
 
-    <h1>Book Management</h1>
+    <h1>Book Update/Delete</h1>
 
     <?php
        $srcAErr = $thumbnailErr =  $idErr = $booktitleErr = $bookauthorErr = $bookpublisherErr = $bookeditionErr = $bookpriceErr ="";
@@ -47,7 +52,7 @@
 
       for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
         $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
-        if($json_decoded['id'] === $searchKey)
+        if($json_decoded['id'] === $searchKey && $json_decoded['sUname'] === $_SESSION['userNameV'])
         {
           echo $srcA." found";
           $flag=1;
@@ -132,7 +137,7 @@
 
       for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
         $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
-        if($json_decoded['id'] === $searchKey)
+        if($json_decoded['id'] === $searchKey && $json_decoded['sUname'] === $_SESSION['userNameV'])
         {
 
           $arr2 = array(
@@ -167,7 +172,7 @@
 
       for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
         $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
-        if($json_decoded['id'] !== $searchKey) {
+        if($json_decoded['id'] !== $searchKey && $json_decoded['sUname'] === $_SESSION['userNameV']) {
           array_push($arr1, $json_decoded);
         }
 
@@ -187,7 +192,7 @@
 
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 
-     <label for="srcA">Search Shop:</label>
+     <label for="srcA">Search Book:</label>
         <input type="search" name="srcA" id="srcA" value="<?php echo $srcA;?>" placeholder="search here">
 
         <input type="submit" name="src" value="Search" class="srcAserBtn">
@@ -198,7 +203,8 @@
 
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-        <fieldset style="margin: 0px 600px ;">
+       
+       <fieldset style="margin: 0% 40%;">
         <legend>Book Information: </legend>
 
         <label for="thumbnail">Book Thumbnail:</label>
@@ -239,12 +245,44 @@
       </fieldset>
       <br>
       
-      <input type="submit" name="update" value="Update Book" class="updateBookBtn">
-
-      <input type="submit" name="delete" value="Delete Book" class="deleteBookBtn">
+       <input type="submit" name="update" value="Update" class="updateBookBtn" style="margin-left: 40%;">
+      <input type="submit" name="delete" value="Delete" class="deleteBookBtn">
 
       </form>
       <br>
-     </center>
+      </div>
+      <div class="footer">
+        <?php include 'footer.php';?>
+      </div>
+      
+
+      <style>
+        body, html {
+        height: 90%;
+        margin: 0;
+        color: white;
+        }
+
+        .bg {
+          background-image: url('about3.jpg');
+          min-height: 100%; 
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .footer{
+          color: white;
+          height: 7%;
+          background-color: #83888A;
+        }
+        legend{
+              text-align: center;
+              font-weight: bold;
+            }
+            h1{
+              text-align: center;
+            }
+      </style>
+
     </body>
 </html>

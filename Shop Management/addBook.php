@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,7 +12,9 @@
      <div class="header">
       <?php include 'header.php';?>
   </div>
-  <center>
+
+    <div class="bg">
+ 
     <h1>Book Management</h1>
 
     <?php
@@ -21,6 +27,9 @@
       $bookpublisher = "";
       $bookedition= "";
       $bookprice= "";
+      $flag = 0;
+      $sUname = $_SESSION['userNameV'];
+
 
 
     
@@ -79,7 +88,8 @@
 
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-        <fieldset style="margin: 0px 600px ;">
+         
+        <fieldset style="margin: 0% 40%;">
         <legend>Book Information: </legend>
 
         <label for="thumbnail">Book Thumbnail:</label>
@@ -120,8 +130,8 @@
       </fieldset>
       <br>
       
-      <input type="submit" value="Add Book" class="addShopBtn">
-
+      <input type="submit" value="Add" class="addBookBtn"  style="margin: 0% 40%;">
+      
       </form>
       <br>
 
@@ -130,9 +140,9 @@
       if($thumbnail != "" && $id != "" && $booktitle != "" && $bookauthor != "" && $bookpublisher != "" && $bookedition != "" && $bookprice != "")
       {
     
-        $arr1 = array('thumbnail' => $thumbnail, 'id' => $id, 'booktitle' => $booktitle, 'bookauthor' => $bookauthor, 'bookpublisher' => $bookpublisher, 'bookedition' =>  $bookedition, 'bookprice' => $bookprice);
+        $arr1 = array('thumbnail' => $thumbnail, 'id' => $id, 'booktitle' => $booktitle, 'bookauthor' => $bookauthor, 'bookpublisher' => $bookpublisher, 'bookedition' =>  $bookedition, 'bookprice' => $bookprice,'sUname' => $sUname );
 
-          $json_encoded_text = json_encode($arr1); 
+            $json_encoded_text = json_encode($arr1); 
             
             $file1 = fopen("bookData.txt", "a");
             fwrite($file1, $json_encoded_text);
@@ -141,7 +151,40 @@
             fclose($file1);
         }
       ?>
-    </center>
 
+      </div>
+      <div class="footer">
+        <?php include 'footer.php';?>
+      </div>
+      
+
+      <style>
+        body, html {
+        height: 90%;
+        margin: 0px;
+        color: white;
+        }
+
+        .bg {
+          background-image: url('about3.jpg');
+          height: 100%; 
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .footer{
+          color: white;
+          height: 7%;
+          background-color: #83888A;
+        }
+        legend{
+              text-align: center;
+              font-weight: bold;
+            }
+        h1{
+          text-align: center;
+        }
+       
+      </style>
     </body>
 </html>

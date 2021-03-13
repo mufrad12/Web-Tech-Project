@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,7 +14,7 @@
   
    <div class="bg">
 
-  	<h1>Book List</h1>
+  	<h1>My Book List</h1>
 
 <?php
 
@@ -29,16 +32,17 @@
                 <th>Book Publisher</th>
                 <th>Book Edition </th>
                 <th>Book Price</th>
-                <th>Book Store Name </th>
               </tr>';
 
   for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++)
   {
     $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
 
-     echo "<tr>";
+      if( $json_decoded['sUname'] === $_SESSION['userNameV'])
+      {
+      echo "<tr>";
 
-     echo '<td> <img src="'. $json_decoded['thumbnail'] . '" alt="The Adventures of Sherlock Holmes" width="200" height="200" > </td>';
+      echo '<td> <img src="'. $json_decoded['thumbnail'] . '"  width="200" height="200" > </td>';
 
       echo "<td>" . $json_decoded['id'] . "</td>";
 
@@ -52,16 +56,18 @@
 
       echo "<td>" . $json_decoded['bookprice'] . "</td>";
 
-      echo "<td>" . $json_decoded['sUname'] . "</td>";
-
       echo "</tr>";
 
       }
+    }
 
     echo "</table>";
 
+      
+    
+
 ?>
- </div>
+</div>
 
     <div class="footer">
       <?php include 'footer.php';?>
@@ -101,7 +107,7 @@
         margin: auto;
       }
       th, td {
-        padding: 15px;
+        padding: 25px;
       }
 
       th {

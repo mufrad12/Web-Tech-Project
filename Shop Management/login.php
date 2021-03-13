@@ -5,47 +5,49 @@ session_start();
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
     <title>Login</title>
   </head>
-  <body>
+  <body >
 
-     <center>
+  	<div class="header">
+        <?php include 'header2.php';?>
+    </div>
+
+  	<div class="bg">
+
     <h1>Login</h1>
-     
+
     <?php
-      $userNameErr = $passwordErr = "" ;
+		$userNameErr = $passwordErr = "" ;
 
-      $userName = "";
-      $password = "";
-      $msg = "";
-      $flag = 0;
+		$userName = "";
+		$password = "";
+		$msg = "";
+		$flag = 0;
 
-      $filepath = "registrationData.txt";
-      $file = fopen($filepath,'r')
-      or die("unable to open file");
+		$filepath = "shopData.txt";
+		$file = fopen($filepath,'r')
+		or die("unable to open file");
 
+		if($_SERVER["REQUEST_METHOD"] == "POST") 
+		{
 
-       if($_SERVER["REQUEST_METHOD"] == "POST") {
+			if(empty($_POST['uname'])) {
+			  $userNameErr = "Please fill up the username properly";
+			  }
+			else {
+			  $userName = $_POST['uname'];
+			}
 
-        if(empty($_POST['userName'])) {
-          $userNameErr = "Please fill up user name properly";
-        }
-        else {
-          $userName = $_POST['userName'];
-        }
+			if(empty($_POST['password'])) {
+			  $passwordErr = "Please fill up the password properly";
+			}
+			else {
+			  $password = $_POST['password'];
+			}
 
-        if(empty($_POST['password'])) {
-          $passwordErr = "Please fill up password properly";
-        }
-        else {
-          $password = $_POST['password'];
-        }
-
-   while($line = fgets($file))
+			while($line = fgets($file))
 				{
-
-	                //list($firstName,$lastName,$gender,$email,$userNameV,$passwordV,$recoveryEmail) = explode( ",", $line );
 
 	                $json_decoded_text = json_decode($line, true);
 
@@ -74,6 +76,8 @@ session_start();
 	                echo "UserName: " . $_SESSION['userNameV'];
 	                echo "<br>";
 	                echo "Password is: " . $_SESSION['passwordV'];
+
+	                header("Location: shopProfileUpdate.php");
 	            }
 	        
 	            else
@@ -83,25 +87,22 @@ session_start();
 	            }
 		}
 
-		session_unset();
-	    session_destroy();
+		//session_unset();
+	    //session_destroy();
 	    fclose($file);
 
-
-
-      ?>
+    ?>
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-      <fieldset style="margin: 0px 600px ;">
+      <fieldset style="margin: 0% 40%;">
+        <legend>Login </legend>
 
-        <legend>Login Information</legend>
-
-        <label for="userName">Username:</label>
-        <input type="text" name="userName" id="userName" value="<?php echo $userName; ?>">
+        <label for="uname">UserName:</label>
+        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
         <br>
         <p style="color:red"><?php echo $userNameErr; ?></p>
 
-        <label for="password">Password:</label>
+        <label for="pass">Password:</label>
         <input type="password" name="password" id="password" value="<?php echo $password; ?>">
         <br>
         <p style="color:red"><?php echo $passwordErr; ?></p>
@@ -109,13 +110,46 @@ session_start();
 
       </fieldset>
       <br>
+      
+      <input type="submit" value="Login" style="margin-left: 40%;">
+      	
+      </style>
+      <a href="http://localhost/project/shopAdd.php" title="">Not yet registered?</a>
 
+	</form>
+  </div>
+  <div class="footer">
+  	<?php include 'footer.php';?>
+  </div> 
 
-    
-      <input type="submit" value="Login">
-      <a href="signUp.php" title="">Not yet registered?</a>
+	<style>
+		body, html {
+		height: 90%;
+		margin: 0;
+		color: white;
+		}
 
-      </form>
-      </center>
+		.bg {
+		background-image: url('about3.jpg');
+		min-height: 100%; 
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		}
+		.footer{
+		color: white;
+		height: 7%;
+		background-color: #83888A;
+		}
+		legend{
+		    text-align: center;
+		    font-weight: bold;
+		  }
+		h1{
+		text-align: center;
+		}
+
+	</style>
+
     </body>
 </html>
