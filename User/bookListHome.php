@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,97 +7,12 @@ session_start();
   <body>
 
     <div class="header">
-        <?php include 'header.php';?>
+        <?php include 'header2.php';?>
     </div>
 
     <div class="bg">
-
-
-
-      <br>
+ 
     	<h1>Book List</h1>
-      <br>
-
-      <?php
-      
-        $bookIdErr = "" ;
-
-
-        $bookId = "";
-        $userUName = $_SESSION['userNameV'];
-        $shopUName = "";
-        $price = "";
-        $flag = 0; 
-        $f = 0;
-
-        if(isset($_POST['cart'])){
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-          if(empty($_POST['crtB'])) {
-            $bookIdErr = "Please fill a valid Book ID";
-          }
-          else {
-            $bookId = $_POST['crtB'];
-            $f = 1;
-          }
-
-        }
-
-        $f1 = fopen("bookData.txt", "r");
-        $data = fread($f1, filesize("bookData.txt"));
-        fclose($f1);
-        $data_after_newline_delimeter = explode("\n", $data);
-        $arr1 = array();
-
-        for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
-          $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
-          if($json_decoded['id'] === $bookId)
-          {
-            $flag=1;
-
-            $bookId = $json_decoded['id']; 
-            $shopUName = $json_decoded['sUname'];
-            $price = $json_decoded['bookprice'];
-          }
-        }
-
-        if($flag==0)
-          echo $bookId." not found";
-
-        else if($flag == 1)
-        {
-          $arr2 = array(
-            'id' => $bookId,
-            'userUName' => $userUName,
-            'shopUName' => $shopUName,
-            'price' => $price
-          );
-          array_push($arr1, $arr2);
-
-          $f2 = fopen("cart.txt", "a");
-         
-            
-          $json_encoded = json_encode($arr1[0]);
-          fwrite($f2, $json_encoded . "\n");
-          
-          fclose($f2);
-        }
-          
-
-        }
-
-      ?>
-
-      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-
-      <label for="crtB">Cart Book:</label>
-      <input type="text" name="crtB" id="crtB" value="<?php echo $bookId;?>">
-
-      <input type="submit" name="cart" value="Add to Cart" class="srcBmployeeBtn">
-      <p style="color:red"><?php echo $bookIdErr; ?></p>
-
-    </form>
-    <br>
 
       <?php
 
@@ -120,6 +31,7 @@ session_start();
                       <th>Book Edition </th>
                       <th>Book Price</th>
                       <th>Book Store Name </th>
+
                     </tr>';
 
         for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++)
@@ -149,7 +61,7 @@ session_start();
             }
 
           echo "</table>";
-          echo "<br>"
+
       ?>
 
     </div>
@@ -187,7 +99,7 @@ session_start();
 
       table, th, td 
       {
-        border: 1px solid white;
+        border: 1px dotted white;
         border-collapse: collapse;
         margin: 0% 20%;
       }
