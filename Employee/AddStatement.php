@@ -204,7 +204,7 @@
      {
       border: 1px solid black;
       border-collapse: collapse;
-      margin: 0% 40%;
+      margin: 0% 50%;
     
       }
     th, td {

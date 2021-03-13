@@ -19,7 +19,7 @@ session_start();
       <h1>My Profile</h1>
 
       <?php
-      echo $_SESSION['userNameV'];
+      //echo $_SESSION['userNameV'];
         $firstNameErr = $lastNameErr = $genderErr = $dobErr =  $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
 
 
@@ -233,12 +233,12 @@ session_start();
           <input type="radio" name="gender" 
           <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female 
 
-          <input type="radio" name="gender" 
+          <input type="radio" name="gender"
           <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other
           <p style="color:red"><?php echo $genderErr; ?></p>
 
           <label for="dob">Date of Birth:</label>
-          <input type="date" name="dob" id="dob" value="<?php echo $dob ?>">
+          <input type="date" name="dob" id="dob" value="<?php echo $dob ?>" disabled>
           <br>
           <p style="color:red"><?php echo $dobErr; ?></p>
 
@@ -255,7 +255,7 @@ session_start();
           <legend>Employee Account Information: </legend>
 
           <label for="id">ID:</label>
-          <input type="text" name="id" id="id" value="<?php echo $id;?>" >
+          <input type="text" name="id" id="id" value="<?php echo $id;?>" disabled>
           <br>
           <p style="color:red"><?php echo $idErr; ?></p>
 
