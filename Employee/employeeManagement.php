@@ -284,7 +284,7 @@ session_start();
       <br>
     </div>
       <div class="footer">
-        <?php include 'footer.php';?>
+        <?php include '..\Admin\footer.php';?>
       </div>
       
 
