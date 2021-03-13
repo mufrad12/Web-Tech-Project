@@ -105,7 +105,7 @@ session_start();
       </fieldset>
       <br>
       
-      <input type="submit" value="Login" style="margin-left: 40%;">
+      <input type="submit" value="Login" style="margin-left: 49%;">
       	
       </style>
 

@@ -12,7 +12,7 @@
 	  	</div>
 
 		<div class="bg">
-			<h1>Full Transaction History</h1>
+			<h1>Transaction History</h1>
 			<br><br><br>
 
 			<?php
