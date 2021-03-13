@@ -1,0 +1,1 @@
+{"productId":"P1","shopId":"S1","userId":"U1","ammount":"75"}

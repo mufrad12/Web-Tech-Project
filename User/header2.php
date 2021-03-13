@@ -3,28 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<link rel="stylesheet" href="css/styleHome.css">
 </head>
 <body>
 	<div class="menu">
 		<div class="mid">
 			<ul>
-				<li><a href="userLogin.php">Home</a></li>
-				<li><a href="bookList.php">Products</a></li>
-				<li><a href="about.php">About</a></li>
-				<li><a href="payment.php">Payment Option</a></li>
-				<li><a href="ShowTransaction.php">Show Transaction History</a></li>
-				<li><a href="ProfileUpdate.php">Profile</a></li>
-				<li><a href="cart.php">Cart</a></li>
-				<li><a href="support.php">Support</a></li>
-				<li><a href="userLogin.php">Logout</a></li>
+				<li><a href="#">Home</a></li>
+				<li><a href="bookListHome.php">Products</a></li>
+				<li><a href="aboutHome.php">About</a></li>
+				<li><a href="userSignup.php">Register</a></li>
+				<li><a href="Login.php">Login</a></li>
 			</ul>
 		</div>
 	</div>
-<style> 
+  <style> 
 
 .mid {
 	position: relative;
-	width: 90%;
+	width: 40%;
 	margin: auto;
 }
 
