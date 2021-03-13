@@ -69,14 +69,16 @@
       body, html {
         height: 90%;
         margin: 0;
-
+        color: white;
         }
 
         .bg {
+          background-image: url('bg.jpg');
           min-height: 100%; 
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
+          text-align: center;
         }
         .footer{
           color: white;
@@ -91,26 +93,24 @@
               text-align: center;
             }
 
-         table, th, td 
-     {
-      border: 1px solid black;
-      border-collapse: collapse;
-      margin: 0% 40%;
-    
-      }
-    th, td {
-      padding: 15px;
-         }
+          table, th, td 
+                {
+                  border: 1px dotted white;
+                  border-collapse: collapse;
+                  margin: 0% 40%;
+                }
+                th, td {
+                  padding: 15px;
+                }
 
-         th {
-  text-align: center;
-           }
+                th {
+                  text-align: center;
+                }
 
-           td {
-  text-align: center;
-        }
+                td {
+                  text-align: center;
+                }
     </style>
-
 
 
 

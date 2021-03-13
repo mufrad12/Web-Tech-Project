@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Add In Statements</title>
+    <title>Add In Transaction</title>
   </head>
 
   <body>
@@ -15,41 +15,52 @@
   <div class="bg">
   		
 
-	    <h1>Add In Statements </h1>
+	    <h1>Add In Transaction </h1>
 
 
 
 
 	    <?php
-	      $dateErr = $expenditureErr = $ammountErr = "" ;
+	      $productIdErr = $shopIdErr = $userIdErr = $ammountErr = "" ;
 
 	      
 
-	      $date= "";
-	      $expenditure= "";
+	      $productId= "";
+	      $shopId= "";
+	      $userId= "";
 	      $ammount= "";
 
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-	        if(empty($_POST['date'])) {
-	          $dateErr = "Please fill up the date properly";
+	        if(empty($_POST['productId'])) {
+	          $productIdErr = "Please fill up the Product Id properly";
 	          }
 
 
 	        else {
-	          $date = $_POST['date'];
+	          $productId = $_POST['productId'];
 	        }
             
 
-            if(empty($_POST['expenditure'])) {
-                $expenditureErr = "Please fill up the expenditure properly";
+            if(empty($_POST['shopId'])) {
+                $shopIdErr = "Please fill up the Shop Id properly";
                 }
 
 
               else {
-                $expenditure = $_POST['expenditure'];
+                $shopId = $_POST['shopId'];
+              }
+
+
+              if(empty($_POST['userId'])) {
+                $userIdErr = "Please fill up the User Id properly";
+                }
+
+
+              else {
+                $userId = $_POST['userId'];
               }
 
 
@@ -73,35 +84,48 @@
 	     
 	      <fieldset style="margin: 0px 700px ;">
 
-	        <!-- <legend>Add Income Statement</legend> -->
+	        <!-- <legend>Add Transaction History</legend> -->
 
 	        
 
 
-	        <label for="date">Date:</label>
+	        <label for="productId">Product Id:</label>
 	        
-	        <input type="date" name="date" id="date" value="<?php echo $date; ?>">
+	        <input type="text" name="productId" id="productId" value="<?php echo $productId; ?>">
 
 	        <br>
 	        
-	        <p style="color:red"><?php echo $dateErr; ?></p>
+	        <p style="color:red"><?php echo $productIdErr; ?></p>
 
 
 
 
-	        <label for="expenditure">Expenditure:</label>
+	        <label for="shopId">Shop Id:</label>
 
-	        <input type="text" name="expenditure" id="expenditure" value="<?php echo $expenditure; ?>">
+	        <input type="text" name="shopId" id="shopId" value="<?php echo $shopId; ?>">
 
 	        <br>
 
-	        <p style="color:red"><?php echo $expenditureErr; ?></p>
+	        <p style="color:red"><?php echo $shopIdErr; ?></p>
 
 	        
 	        
-	        <label for="ammount">Ammount:</label>
+	          <label for="userId">User Id:</label>
 
-	        <input type="number" name="ammount" id="ammount" placeholder="put (-) for expenses" value="<?php echo $ammount ?>" >
+	        <input type="text" name="userId" id="userId" value="<?php echo $userId; ?>">
+
+	        <br>
+
+	        <p style="color:red"><?php echo $userIdErr; ?></p>
+
+	        
+
+
+
+
+	        <label for="ammount">ammount:</label>
+
+	        <input type="number" name="ammount" id="ammount" value="<?php echo $ammount ?>" >
 
 	        <br>
 
@@ -116,12 +140,12 @@
 
 
 
-			<input type="submit" value="Update">
+			<input type="submit" value="Upload">
 
             <br>
             <br>
             <br>
-            <a href="ShowStatement.php" title="">Show Full Statement</a>
+            <a href="ShowTransaction.php" title="">Show Full Transaction History</a>
 
 			</form>
 
@@ -133,15 +157,15 @@
 
 
 
-			if( $date!= "" && $expenditure != "" && $ammount != "")
+			if( $productId!= "" && $shopId != "" && $userId != "" && $ammount != "")
 			{
 		
-				$arr1 = array( 'date' => $date, 'expenditure' =>  $expenditure, 'ammount' => $ammount);
+				$arr1 = array( 'productId' => $productId, 'shopId' =>  $shopId, 'userId' => $userId, 'ammount' => $ammount);
 
 	    		$json_encoded_text = json_encode($arr1); 
 
 
-	    		$file1 = fopen("statement.txt", "a");
+	    		$file1 = fopen("transaction.txt", "a");
                 
                 echo "<br>";
 

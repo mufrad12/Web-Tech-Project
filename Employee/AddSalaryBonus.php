@@ -158,21 +158,21 @@
 
     </div>
 
- <style>
-			body, html {
-				height: 90%;
-				margin: 0;
+		<style>
+				body, html {
+			    height: 90%;
+			    margin: 0;
+			    color: white;
+			    }
 
-				}
-
-				.bg {
-					min-height: 100%; 
-					background-position: center;
-					background-repeat: no-repeat;
-					background-size: cover;
-					text-align: center;
-					
-				}
+			    .bg {
+			      background-image: url('bg.jpg');
+			      min-height: 100%; 
+			      background-position: center;
+			      background-repeat: no-repeat;
+			      background-size: cover;
+			      text-align: center;
+			    }
 				.footer{
 					color: white;
 					height: 7%;

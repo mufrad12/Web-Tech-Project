@@ -5,50 +5,50 @@ session_start();
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
     <title>Login</title>
   </head>
-  <body>
-  	<center>
+  <body >
 
-	    <h1>Login</h1>
+  	<div class="bg">
 
-	    <?php
-			$userNameErr = $passwordErr = "" ;
+    <h1>Login</h1>
 
-			$userName = "";
-			$password = "";
-			$msg = "";
-			$flag = 0;
+    <?php
+		$userNameErr = $passwordErr = "" ;
 
-			$filepath = "login.txt";
-			$file = fopen($filepath,'r')
-			or die("unable to open file");
+		$userName = "";
+		$password = "";
+		$msg = "";
+		$flag = 0;
 
-			if($_SERVER["REQUEST_METHOD"] == "POST") 
-			{
+		$filepath = "../Admin/employee.txt";
+		$file = fopen($filepath,'r')
+		or die("unable to open file");
 
-				if(empty($_POST['uname'])) {
-				  $userNameErr = "Please fill up the username properly";
-				  }
-				else {
-				  $userName = $_POST['uname'];
-				}
+		if($_SERVER["REQUEST_METHOD"] == "POST") 
+		{
 
-				if(empty($_POST['password'])) {
-				  $passwordErr = "Please fill up the password properly";
-				}
-				else {
-				  $password = $_POST['password'];
-				}
+			if(empty($_POST['uname'])) {
+			  $userNameErr = "Please fill up the username properly";
+			  }
+			else {
+			  $userName = $_POST['uname'];
+			}
 
-				while($line = fgets($file))
+			if(empty($_POST['password'])) {
+			  $passwordErr = "Please fill up the password properly";
+			}
+			else {
+			  $password = $_POST['password'];
+			}
+
+			while($line = fgets($file))
 				{
 
-	                //list($firstName,$lastName,$gender,$email,$userNameV,$passwordV,$recoveryEmail) = explode( ",", $line );
-
-
 	                $json_decoded_text = json_decode($line, true);
+
+	                print_r($json_decoded_text);
+	                echo "<br>";
 
 	                $userNameV= $json_decoded_text['userName'];
 	                $passwordV= $json_decoded_text['password'];
@@ -72,6 +72,8 @@ session_start();
 	                echo "UserName: " . $_SESSION['userNameV'];
 	                echo "<br>";
 	                echo "Password is: " . $_SESSION['passwordV'];
+
+	                header("Location: employeeManagement.php");
 	            }
 	        
 	            else
@@ -79,44 +81,68 @@ session_start();
 	                $msg = "Login Denied!!!! Try again...";
 	                echo $msg;
 	            }
+		}
 
+	    fclose($file);
 
-	        }
+    ?>
 
-	        session_unset();
-		    session_destroy();
-		    fclose($file);
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+      <fieldset style="margin: 0% 40%;">
+        <legend>Login </legend>
 
+        <label for="uname">UserName:</label>
+        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
+        <br>
+        <p style="color:red"><?php echo $userNameErr; ?></p>
 
+        <label for="pass">Password:</label>
+        <input type="password" name="password" id="password" value="<?php echo $password; ?>">
+        <br>
+        <p style="color:red"><?php echo $passwordErr; ?></p>
+       
 
-	    ?>
+      </fieldset>
+      <br>
+      
+      <input type="submit" value="Login" style="margin-left: 49%;">
+      	
+      </style>
 
-	    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-	    	
-			<fieldset style="margin: 0px 700px ;">
-	        <legend>Login </legend>
+	</form>
+  </div>
+  <div class="footer">
+  	<?php include 'footer.php';?>
+  </div> 
 
-	        <label for="uname">UserName:</label>
-	        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
-	        <br>
-	        <p style="color:red"><?php echo $userNameErr; ?></p>
+	<style>
+		body, html {
+		height: 95%;
+		margin: 0;
+		color: white;
+		}
 
-	        <label for="pass">Password:</label>
-	        <input type="password" name="password" id="password" value="<?php echo $password; ?>">
-	        <br>
-	        <p style="color:red"><?php echo $passwordErr; ?></p>
-	       
+		.bg {
+			background-image: url('bg.jpg');
+			height: 100%; 
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		.footer{
+			color: white;
+			height: 7%;
+			background-color: #83888A;
+		}
+		legend{
+          text-align: center;
+          font-weight: bold;
+        }
+        h1{
+        	text-align: center;
+        }
 
-			</fieldset>
-			<br>
+	</style>
 
-			<input type="submit" value="Login">
-
-	    </form>
-
-	      <p style="color:red"><?php echo $userName; ?></p>
-	      <p style="color:red"><?php echo $password; ?></p>
-
-      </center>
     </body>
 </html>

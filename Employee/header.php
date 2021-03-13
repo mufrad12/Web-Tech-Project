@@ -20,11 +20,16 @@
 				</li>
 				<li><a href="#">Customer Order Information</a>
 					<ul>
-						<li><a href="#">Check Customer Order</a></li>
+						<li><a href="CheckCustomerOrder.php">Check Customer Order</a></li>
 						<li><a href="#">Check Refund Request</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Check Transaction History</a></li>
+				<li><a href="#">Transaction History</a>
+				<ul>
+				    <li><a href="AddTransaction.php">Add in Transaction History</a></li>
+					<li><a href="ShowTransaction.php">Show Transaction History</a></li>
+				</ul>
+				</li>
 				<li><a href="#">Income Statement</a>
 				<ul>
 				    <li><a href="AddStatement.php">Add Statement</a></li>

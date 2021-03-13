@@ -2,31 +2,25 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Profile Update and Delete</title>
+    <title>Sign Up</title>
   </head>
   <body>
-  <center>
-    <h1>Profile Update and Delete</h1>
+
+    <h1>Sign Up</h1>
 
     <?php
-         $firstNameErr = $lastNameErr = $genderErr =  $dobErr = $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
+        $firstNameErr = $lastNameErr = $genderErr =  $dobErr = $emailErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
 
       $firstName = ""; 
       $lastName = "";
       $gender = "";
       $dob = "";
       $email = "";
-      $id = "";
       $userName= "";
       $password= "";
       $conPassword = "";
 
-
-    if((isset($_POST['update']))||(isset($_POST['delete'])))
-        {
-
-       if($_SERVER["REQUEST_METHOD"] == "POST") {
-
+      if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(empty($_POST['fname'])) {
           $firstNameErr = "Please fill up the first name properly";
         }
@@ -59,13 +53,6 @@
               $emailErr = "Invalid email format"; 
             }
         }
-
-        if(empty($_POST['id'])) {
-        $idErr = "Please fill up the id number properly";
-      }
-      else {
-        $id = $_POST['id'];
-      }
 
         if(empty($_POST['uname'])) {
           $userNameErr = "Please fill up the username properly";
@@ -100,67 +87,12 @@
         }
         }
 
-
-    if(isset($_POST['update']))
-    {
-
-      for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
-        $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
-        if($json_decoded['userName'] === $searchKey)
-        {
-
-          $arr2 = array(
-            'firstName' => $firstName, 
-            'lastName' => $lastName,
-            'gender' => $gender,
-            'dob' => $dob,
-            'email' => $email,
-            'id' => $json_decoded['id'],
-            'userName' => $json_decoded['userName'],
-            'password' => $password,
-            'conPassword' => $conPassword
-          );
-          array_push($arr1, $arr2);
-        }
-
-        else
-        {
-          array_push($arr1, $json_decoded);
-        }
-      }
-
-      $f2 = fopen("registration.txt", "w");
-      for($j = 0; $j < count($arr1); $j++) {
-        $json_encoded = json_encode($arr1[$j]);
-        fwrite($f2, $json_encoded . "\n");
-      }
-      fclose($f2);
-
-    }
-
-    if(isset($_POST['delete']))
-    {
-
-      for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++) {
-        $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
-        if($json_decoded['userName'] !== $searchKey) {
-          array_push($arr1, $json_decoded);
-        }
-
-      }
-      $f2 = fopen("registrationData.txt", "w");
-      for($j = 0; $j < count($arr1); $j++) {
-        $json_encoded = json_encode($arr1[$j]);
-        fwrite($f2, $json_encoded . "\n");
-      }
-      fclose($f2);
-
-    }
-
-  }
-  
-
     ?>
+    
+
+    </form>
+    <br>
+
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
       <fieldset>
@@ -209,10 +141,6 @@
         <legend>User Account Information: </legend>
         <br>
 
-        <label for="id">Id :</label>
-       <input type="text" name="id" id="id" value="<?php echo $id; ?>"> 
-       <p style="color:red"><?php echo $idErr; ?></p>
-
         <label for="uname">UserName:</label>
         <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
         <br>
@@ -231,11 +159,29 @@
       </fieldset>
       <br>
       
-      <input type = "submit" value = "Update Profile" class = "updateUserBtn">
-      <input type = "submit" value = "Delete Profile" class = "deleteUserBtn">
+      <input type="submit" value="Submit">
 
       </form>
       <br>
+
+      <?php
+
+      if($firstName != "" && $lastName != "" && $gender != "" && $dob != "" && $email != "" && $userName != "" && $password != "" && $conPassword != "")
+      {
+    
+        $arr1 = array('firstName' => $firstName, 'lastName' => $lastName, 'gender' => $gender, 'dob' => $dob, 'email' => $email, 'userName' => $userName, 'password' => $password, 'conPassword' => $conPassword);
+
+          $json_encoded_text = json_encode($arr1); 
+
+          $file1 = fopen("registration.txt", "a");
+          fwrite($file1, $json_encoded_text);
+          fwrite($file1, "\n");
+
+          fclose($file1);
+
+      }
+
+      ?>
 
     </body>
 </html>

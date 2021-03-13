@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Show Salary and Festival Bonus</title>
+    <title>Show Transaction History</title>
  </head>
 
 	<body>
@@ -12,14 +12,14 @@
 	  	</div>
 
 		<div class="bg">
-			<h1>Full Income Statement</h1>
+			<h1>Transaction History</h1>
 			<br><br><br>
 
 			<?php
 		
 
-			  $f1 = fopen("statement.txt", "r");
-			  $data = fread($f1, filesize("statement.txt"));
+			  $f1 = fopen("transaction.txt", "r");
+			  $data = fread($f1, filesize("transaction.txt"));
 			  fclose($f1);
 
 			  $data_after_newline_delimeter = explode("\n", $data);
@@ -27,9 +27,11 @@
 			  echo '<table>
 			              
 			            <tr>
-			                <th>Date</th>
+			                <th>Product Id</th>
 
-			                <th>Expenditure</th>
+			                <th>Shop Id</th>
+
+			                <th>User Id</th>
 
 			                <th>Ammount</th>
 			            </tr>';
@@ -40,9 +42,11 @@
 
 			     echo "<tr>";
 
-			      echo "<td>" . $json_decoded['date'] . "</td>";
+			      echo "<td>" . $json_decoded['productId'] . "</td>";
 
-			      echo "<td>" . $json_decoded['expenditure'] . "</td>";
+			      echo "<td>" . $json_decoded['shopId'] . "</td>";
+
+			      echo "<td>" . $json_decoded['userId'] . "</td>";
 
 			      echo "<td>" . $json_decoded['ammount'] . "</td>";
 

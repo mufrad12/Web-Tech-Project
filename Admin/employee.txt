@@ -1,1 +1,2 @@
 {"firstName":"Nobobi","lastName":"Hasan","gender":"male","dob":"2021-03-09","email":"nobobisshatin@gmail.com","id":"18-38712-3","userName":"emp","password":"00","conPassword":"00"}
+{"firstName":"Abu","lastName":"Jubaer","gender":"male","dob":"1999-10-05","email":"abujubaer90@gmail.com","id":"18-38784-3","userName":"emp2","password":"01","conPassword":"01"}
