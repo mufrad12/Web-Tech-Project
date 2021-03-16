@@ -11,14 +11,23 @@
         </div>
 		<div class="mid">
 			<ul>
+<<<<<<< HEAD
 				<li><a href="bookList.php">Home</a></li>
+=======
+				<li><a href="userLogin.php">Home</a></li>
+				<li><a href="bookList.php">Products</a></li>
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
 				<li><a href="about.php">About</a></li>
 				<li><a href="payment.php">Payment Option</a></li>
 				<li><a href="ShowTransaction.php">Show Transaction History</a></li>
 				<li><a href="ProfileUpdate.php">Profile</a></li>
 				<li><a href="cart.php">Cart</a></li>
 				<li><a href="support.php">Support</a></li>
+<<<<<<< HEAD
 				<li><a href="../login.php">Logout</a></li>
+=======
+				<li><a href="userLogin.php">Logout</a></li>
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
 			</ul>
 		</div>
 	</div>
@@ -82,6 +91,7 @@
 .menu ul li  ul li:hover {
 	transform: scale(1.5);
 	z-index: 999;
+<<<<<<< HEAD
 }	
 
 .logo{
@@ -91,6 +101,9 @@
     float: left;
 }
 
+=======
+}	 
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
 </style> 
 </body>
 

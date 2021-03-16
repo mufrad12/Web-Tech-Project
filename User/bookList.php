@@ -47,8 +47,13 @@ session_start();
 
         }
 
+<<<<<<< HEAD
         $f1 = fopen("../database/bookData.txt", "r");
         $data = fread($f1, filesize("../database/bookData.txt"));
+=======
+        $f1 = fopen("bookData.txt", "r");
+        $data = fread($f1, filesize("bookData.txt"));
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
         fclose($f1);
         $data_after_newline_delimeter = explode("\n", $data);
         $arr1 = array();
@@ -78,7 +83,11 @@ session_start();
           );
           array_push($arr1, $arr2);
 
+<<<<<<< HEAD
           $f2 = fopen("../database/cart.txt", "a");
+=======
+          $f2 = fopen("cart.txt", "a");
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
          
             
           $json_encoded = json_encode($arr1[0]);
@@ -105,8 +114,13 @@ session_start();
 
       <?php
 
+<<<<<<< HEAD
         $f1 = fopen("../database/bookData.txt", "r");
         $data = fread($f1, filesize("../database/bookData.txt"));
+=======
+        $f1 = fopen("bookData.txt", "r");
+        $data = fread($f1, filesize("bookData.txt"));
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
         fclose($f1);
         $data_after_newline_delimeter = explode("\n", $data);
 
@@ -128,7 +142,11 @@ session_start();
 
            echo "<tr>";
 
+<<<<<<< HEAD
            echo '<td> <img src="../images/'. $json_decoded['thumbnail'] . '" alt="The Adventures of Sherlock Holmes" width="200" height="200" > </td>';
+=======
+           echo '<td> <img src="'. $json_decoded['thumbnail'] . '" alt="The Adventures of Sherlock Holmes" width="200" height="200" > </td>';
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
 
             echo "<td>" . $json_decoded['id'] . "</td>";
 
@@ -166,7 +184,11 @@ session_start();
       }
 
       .bg {
+<<<<<<< HEAD
         background-image: url('../images/about3.jpg');
+=======
+        background-image: url('about3.jpg');
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
         min-height: 100%; 
         background-position: center;
         background-repeat: no-repeat;

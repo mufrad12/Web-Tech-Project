@@ -106,7 +106,11 @@
 
           $json_encoded_text = json_encode($arr1); 
             
+<<<<<<< HEAD
             $file1 = fopen("../database/support.txt", "a");
+=======
+            $file1 = fopen("support.txt", "a");
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
             fwrite($file1, $json_encoded_text);
             fwrite($file1, "\n");
 
@@ -126,7 +130,11 @@
 				}
 
 				.bg {
+<<<<<<< HEAD
 					background-image: url('../images/about3.jpg');
+=======
+					background-image: url('about3.jpg');
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
 					min-height: 100%; 
 					background-position: center;
 					background-repeat: no-repeat;

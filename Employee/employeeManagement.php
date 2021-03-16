@@ -242,8 +242,7 @@ session_start();
 
           <label for="uname">UserName:</label>
           <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>" disabled>
-          <br>
-          <br>
+
 
           <label for="pass">Password:</label>
           <input type="password" name="password" id="password" value="<?php echo $password; ?>">
@@ -265,7 +264,7 @@ session_start();
       <br>
     </div>
       <div class="footer">
-        <?php include '../footer.php';?>
+
       </div>
       
 

@@ -218,7 +218,11 @@
       }
 
       .bg {
+<<<<<<< HEAD
         background-image: url('../images/about3.jpg');
+=======
+        background-image: url('about3.jpg');
+>>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
         min-height: 100%; 
         background-position: center;
         background-repeat: no-repeat;

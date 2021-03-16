@@ -18,8 +18,11 @@
       <?php
     
 
+
         $f1 = fopen("../database/cart.txt", "r");
         $data = fread($f1, filesize("../database/cart.txt"));
+        $f1 = fopen("..\User\cart.txt", "r");
+        $data = fread($f1, filesize("..\User\cart.txt"));
         fclose($f1);
 
         $data_after_newline_delimeter = explode("\n", $data);
@@ -59,7 +62,7 @@
       ?>
     </div>
     <div class="footer">
-        <?php include '../footer.php';?>
+
     </div>
 
     <style>
