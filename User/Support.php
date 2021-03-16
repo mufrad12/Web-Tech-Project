@@ -5,14 +5,11 @@
     <title>Contact Us</title>
   </head>
   <body>
+<div class="header">
+      <?php include 'header.php';?>
+  </div>
+<h1>Contact Us</h1>
 
-  <div class="header">
-			<?php include 'header.php';?>
-	  	</div>
-
-		<div class="bg">
-
-		<h1>Contact Us</h1>
 
 <?php
 		$nameErr = $numberErr= $emailErr= $subjectErr="";
@@ -48,7 +45,7 @@
 				{ $emailErr = "Invalid email format"; }
 		         }
 
-	        if(empty($_POST['subject'])) {
+	        if(isset($_POST['subject'])) {
 				$subjectErr = "Please fill up the comments properly";
 			}
 			else {
@@ -57,7 +54,11 @@
 
 		     }
 
+
+
 	?>
+
+
 
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 
@@ -80,11 +81,16 @@
 
 			<label for="subject">Comments:</label>
 
-			<textarea name="subject" id="subject"  rows="10" cols="20" style="width:650px;margin-left: 50px;vertical-align: middle;" value="<?php echo $subject; ?>" >
+			<textarea name="subject" rows="7" cols="40" style="width:650px;margin-left: 50px;vertical-align: middle;" 
+			value="<?php echo $subject; ?>" >
 			</textarea>
 
 			<p style="color:red"><?php echo $subjectErr; ?></p>
 
+
+			
+			<br>
+            <br>
 			<input type="submit" value="Submit" style="width:100px;margin-left: 125px;vertical-align: middle;">
 
 	
@@ -106,54 +112,12 @@
 
           $json_encoded_text = json_encode($arr1); 
             
-<<<<<<< HEAD
-            $file1 = fopen("../database/support.txt", "a");
-=======
-            $file1 = fopen("support.txt", "a");
->>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
+            $file1 = fopen("supportShop.txt", "a");
             fwrite($file1, $json_encoded_text);
             fwrite($file1, "\n");
 
             fclose($file1);
         }
       ?>
-		</div>
-	  <div class="footer">
-	      <?php include 'footer.php';?>
-	  </div>
-
-	  <style>
-			body, html {
-				height: 90%;
-				margin: 0;
-				color: white;
-				}
-
-				.bg {
-<<<<<<< HEAD
-					background-image: url('../images/about3.jpg');
-=======
-					background-image: url('about3.jpg');
->>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
-					min-height: 100%; 
-					background-position: center;
-					background-repeat: no-repeat;
-					background-size: cover;
-				}
-				.footer{
-					color: white;
-					height: 7%;
-					background-color: #83888A;
-				}
-				legend{
-		          text-align: center;
-		          font-weight: bold;
-		        }
-		        h1{
-		        	text-align: center;
-		        } 
-
-		</style>
-	</body>
-
+		</body>
 </html>

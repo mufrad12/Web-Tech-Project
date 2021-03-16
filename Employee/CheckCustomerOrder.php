@@ -1,84 +1,106 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8">
-    <title>Customer Order Details</title>
- </head>
-
+    <title>Search Order</title>
+  </head>
   <body>
-   
     <div class="header">
       <?php include 'header.php';?>
-      </div>
+    </div>
 
     <div class="bg">
-      <h1>Customer Order Details</h1>
-      <br><br><br>
 
-      <?php
+    <h1>Search Order</h1>
+
+    <?php
+      $srcOErr = "";
+
+      $srcO = "";
+      
+
+       if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+        if(empty($_POST['srcO'])) {
+          $srcOErr = "Please fill up the Order ID";
+        }
+        else {
+          $srcO = $_POST['srcO'];
+        }
+
+       }
+
+    ?>
+
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+
+      <label for="srcO">Search Order:</label>
+      <input type="search" name="srcO" id="srcO" value="<?php echo $srcO;?>">
+
+      <input type="submit" value="Search" class="srcOmployeeBtn">
+      <p style="color:red"><?php echo $srcOErr; ?></p>
+
+    </form>
+    <br>
+
+
+<form >
+    <fieldset style="text-align: center">
+      <legend> Order Details:</legend>
+
+       <label for="orderId">Order ID :</label> 
+       <input type="text" disabled> 
+      <br>
+      
+       <br>
+       <label for="shopId">Shop ID :</label>
+       <input type="text" disabled> 
+      <br>
+       <br>
+
+       <label for="userId">User ID :</label>
+       <input type="text" disabled> 
+      <br>
+       <br>
+      
+
+       <label for="ammount">Ammount :</label>
+       <input type="text" disabled> 
+      <br>
+    
+       <br>
+  
+       
+    </fieldset>
+
+  </div>
+
+
+  <div class="mid">
+
+       
+
+  </div>
+
+    <div class="footer">
+      <?php include 'footer.php';?>
+    </div>
     
 
-
-        $f1 = fopen("../database/cart.txt", "r");
-        $data = fread($f1, filesize("../database/cart.txt"));
-        $f1 = fopen("..\User\cart.txt", "r");
-        $data = fread($f1, filesize("..\User\cart.txt"));
-        fclose($f1);
-
-        $data_after_newline_delimeter = explode("\n", $data);
-
-        echo '<table>
-                    
-                  <tr>
-                      <th>Book Id</th>
-
-                      <th>User Username</th>
-
-                      <th>Shop Username</th>
-
-                      <th>Price</th>
-                  </tr>';
-
-        for($i = 0; $i < count($data_after_newline_delimeter) - 1; $i++)
-        {
-          $json_decoded = json_decode($data_after_newline_delimeter[$i], true);
-
-           echo "<tr>";
-
-            echo "<td>" . $json_decoded['id'] . "</td>";
-
-            echo "<td>" . $json_decoded['userUName'] . "</td>";
-
-            echo "<td>" . $json_decoded['shopUName'] . "</td>";
-
-            echo "<td>" . $json_decoded['price'] . "</td>";
-
-            echo "</tr>";
-
-            }
-
-          echo "</table>";
-
-      ?>
-    </div>
-    <div class="footer">
-
-    </div>
-
-    <style>
-      body, html {
+   <style>
+        body, html {
         height: 90%;
         margin: 0;
         color: white;
         }
 
         .bg {
-          background-image: url('../images/about3.jpg');
+          background-image: url('bg.jpg');
           min-height: 100%; 
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          text-align: center;
+          margin: 40;
         }
         .footer{
           color: white;
@@ -92,25 +114,6 @@
             h1{
               text-align: center;
             }
-
-          table, th, td 
-                {
-                  border: 1px dotted white;
-                  border-collapse: collapse;
-                  margin: 0% 40%;
-                }
-                th, td {
-                  padding: 15px;
-                }
-
-                th {
-                  text-align: center;
-                }
-
-                td {
-                  text-align: center;
-                }
-    </style>
-  </body>
-
+      </style>
+</body>
 </html>

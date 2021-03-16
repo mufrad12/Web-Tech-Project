@@ -18,8 +18,8 @@
 			<?php
 		
 
-			  $f1 = fopen("../database/transaction.txt", "r");
-			  $data = fread($f1, filesize("../database/transaction.txt"));
+			  $f1 = fopen("transaction.txt", "r");
+			  $data = fread($f1, filesize("transaction.txt"));
 			  fclose($f1);
 
 			  $data_after_newline_delimeter = explode("\n", $data);
@@ -29,9 +29,9 @@
 			            <tr>
 			                <th>Product Id</th>
 
-			                <th>Shop Username</th>
+			                <th>Shop Id</th>
 
-			                <th>User Username</th>
+			                <th>User Id</th>
 
 			                <th>Ammount</th>
 			            </tr>';
@@ -44,9 +44,9 @@
 
 			      echo "<td>" . $json_decoded['productId'] . "</td>";
 
-			      echo "<td>" . $json_decoded['shopUName'] . "</td>";
+			      echo "<td>" . $json_decoded['shopId'] . "</td>";
 
-			      echo "<td>" . $json_decoded['userUName'] . "</td>";
+			      echo "<td>" . $json_decoded['userId'] . "</td>";
 
 			      echo "<td>" . $json_decoded['ammount'] . "</td>";
 
@@ -59,7 +59,7 @@
 			?>
 		</div>
 	  <div class="footer">
-	      <?php include '../footer.php';?>
+	      <?php include 'footer.php';?>
 	  </div>
 
 	  <style>
@@ -70,7 +70,7 @@
 				}
 
 				.bg {
-					background-image: url('../images/about3.jpg');
+					background-image: url('bg.jpg');
 					min-height: 100%; 
 					background-position: center;
 					background-repeat: no-repeat;

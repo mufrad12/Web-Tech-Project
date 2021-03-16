@@ -1,3 +1,0 @@
-{"date":"2021-03-11","expenditure":"Salary of emp3","ammount":"-33450"}
-{"date":"2021-03-12","expenditure":"Buying Furniture","ammount":"-2000"}
-{"date":"2021-03-14","expenditure":"Buying Books","ammount":"-6871"}

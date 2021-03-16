@@ -1,0 +1,3 @@
+{"productId":"P1","shopUName":"shop1","userUName":"U1","ammount":"75"}
+{"productId":"P2","shopUName":"shop2","userUName":"U2","ammount":"130"}
+{"productId":"P3","shopUName":"shop1","userUName":"U3","ammount":"35"}

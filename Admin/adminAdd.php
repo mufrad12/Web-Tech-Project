@@ -11,7 +11,6 @@
 
   	<div class="bg">
 
-  		<br>
   		<h1>Add an Admin</h1>
 
 	    <?php
@@ -29,6 +28,13 @@
 	      
 
 	      if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	        if(empty($_POST['id'])) {
+	          $idErr = "Please fill up the id properly";
+	        }
+	        else {
+	          $id = $_POST['id'];
+	        }
 
 	        if(empty($_POST['fname'])) {
 	          $firstNameErr = "Please fill up the first name properly";
@@ -61,13 +67,6 @@
 	            { 
 	              $emailErr = "Invalid email format"; 
 	            }
-	        }
-
-	        if(empty($_POST['id'])) {
-	          $idErr = "Please fill up the id properly";
-	        }
-	        else {
-	          $id = $_POST['id'];
 	        }
 
 	        if(empty($_POST['uname'])) {
@@ -135,7 +134,7 @@
 	        <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other
 	        <p style="color:red"><?php echo $genderErr; ?></p>
 
-	        <label for="dob">Date of Birth:</label>
+	        <label for="dob">DOB:</label>
 	        <input type="date" name="dob" id="dob" value="<?php echo $dob ?>">
 	        <br>
 	        <p style="color:red"><?php echo $dobErr; ?></p>
@@ -163,19 +162,19 @@
 	        <p style="color:red"><?php echo $userNameErr; ?></p>
 
 	        <label for="pass">Password:</label>
-	        <input type="password" minlength='4' name="password" id="password" value="<?php echo $password; ?>">
+	        <input type="password" name="password" id="password" value="<?php echo $password; ?>">
 	        <br>
 	        <p style="color:red"><?php echo $passwordErr; ?></p>
 	        
 	        <label for="conPassword">Re-type Password:</label>
-	        <input type="password" minlength='4' name="conPassword" id="conPassword" value="<?php echo $conPassword ?>">
+	        <input type="password" name="conPassword" id="conPassword" value="<?php echo $conPassword ?>">
 	        <br>
 	        <p style="color:red"><?php echo $conPasswordErr; ?></p>
 
 	      </fieldset>
 	      <br>
 	      
-	      <input type="submit" value="Add" class="addAdminBtn"  style="margin: 0% 40%;">
+	      <input type="submit" value="Add" class="addAdminBtn"  style="margin: 0% 40%;">>
 
 	      </form>
 	      <br>
@@ -185,11 +184,11 @@
 				if($firstName != "" && $lastName != "" && $gender != "" && $dob != "" && $email != "" && $id != "" && $userName != "" && $password != "" && $conPassword != "")
 				{
 			
-					$arr1 = array('firstName' => $firstName, 'lastName' => $lastName, 'gender' => $gender,'dob' => $dob, 'email' => $email, 'id' => $id, 'userName' => $userName, 'password' =>  $password, 'conPassword' => $conPassword);
+					$arr1 = array('firstName' => $firstName, 'lastName' => $lastName, 'gender' => $gender,'dob' => $dob, 'email' => $email, 'userName' => $userName, 'password' =>  $password, 'conPassword' => $conPassword);
 
 		    		$json_encoded_text = json_encode($arr1); 
 
-		    		$file1 = fopen("../database/admin.txt", "a");
+		    		$file1 = fopen("admin.txt", "a");
 				    fwrite($file1, $json_encoded_text);
 				    fwrite($file1, "\n");
 
@@ -205,13 +204,13 @@
 			<style>
 				body, html {
 				height: 90%;
-				margin: 0;
+				margin: 0px;
 				color: white;
 				}
 
 				.bg {
-					background-image: url('../images/about3.jpg');
-					min-height: 100%; 
+					background-image: url('http://sfwallpaper.com/images/background-wallpaper-for-website-1.jpg');
+					height: 100%; 
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: cover;

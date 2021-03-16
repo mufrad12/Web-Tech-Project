@@ -11,7 +11,7 @@ session_start();
   <body>
     
     <div class="header">
-      <?php include '../employee/header.php';?>
+      <?php include 'header.php';?>
   </div>
 
     <div class="bg">
@@ -20,7 +20,7 @@ session_start();
 
       <?php
       //echo $_SESSION['userNameV'];
-        $firstNameErr = $lastNameErr = $genderErr =  $emailErr = $passwordErr = $conPasswordErr = "" ;
+        $firstNameErr = $lastNameErr = $genderErr = $dobErr =  $emailErr = $idErr = $userNameErr = $passwordErr = $conPasswordErr = "" ;
 
 
         $firstName = ""; 
@@ -36,8 +36,8 @@ session_start();
         $searchKey = $_SESSION['userNameV'];
          
 
-      $f1 = fopen("../database/employee.txt", "r");
-      $data = fread($f1, filesize("../database/employee.txt"));
+      $f1 = fopen("../Admin/employee.txt", "r");
+      $data = fread($f1, filesize("../Admin/employee.txt"));
       fclose($f1);
       $data_after_newline_delimeter = explode("\n", $data);
       $arr1 = array();
@@ -65,7 +65,13 @@ session_start();
 
             if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            
+            if(empty($_POST['id'])) {
+              $idErr = "Please fill up the id properly";
+            }
+            else {
+              $id = $_POST['id'];
+            }
+
             if(empty($_POST['fname'])) {
               $firstNameErr = "Please fill up the first name properly";
             }
@@ -80,6 +86,12 @@ session_start();
               $lastName = $_POST['lname'];
             }
 
+            if(empty($_POST['dob'])) {
+              $dobErr = "Please fill up the date of birth properly";
+            }
+            else {
+              $dob = $_POST['dob'];
+            }
 
             if(empty($_POST['email'])) {
               $emailErr = "Please enter an email";
@@ -91,6 +103,13 @@ session_start();
                 { 
                   $emailErr = "Invalid email format"; 
                 }
+            }
+
+            if(empty($_POST['uname'])) {
+              $userNameErr = "Please fill up the username properly";
+              }
+            else {
+              $userName = $_POST['uname'];
             }
 
             if(empty($_POST['password'])) {
@@ -120,8 +139,8 @@ session_start();
             
           }
 
-        $f1 = fopen("../database/employee.txt", "r");
-        $data = fread($f1, filesize("../database/employee.txt"));
+        $f1 = fopen("../Admin/employee.txt", "r");
+        $data = fread($f1, filesize("../Admin/employee.txt"));
         fclose($f1);
         $data_after_newline_delimeter = explode("\n", $data);
         $arr1 = array();
@@ -155,7 +174,7 @@ session_start();
             }
           }
 
-          $f2 = fopen("../database/employee.txt", "w");
+          $f2 = fopen("../Admin/employee.txt", "w");
           for($j = 0; $j < count($arr1); $j++) {
             $json_encoded = json_encode($arr1[$j]);
             fwrite($f2, $json_encoded . "\n");
@@ -175,7 +194,7 @@ session_start();
             }
 
           }
-          $f2 = fopen("../database/employee.txt", "w");
+          $f2 = fopen("../Admin/employee.txt", "w");
           for($j = 0; $j < count($arr1); $j++) {
             $json_encoded = json_encode($arr1[$j]);
             fwrite($f2, $json_encoded . "\n");
@@ -221,7 +240,7 @@ session_start();
           <label for="dob">Date of Birth:</label>
           <input type="date" name="dob" id="dob" value="<?php echo $dob ?>" disabled>
           <br>
-          <br>
+          <p style="color:red"><?php echo $dobErr; ?></p>
 
           <label for="email">Email:</label>
           <input type="email" name="email" id="email" placeholder="...@gmail.com" value="<?php echo $email ?>">
@@ -238,11 +257,12 @@ session_start();
           <label for="id">ID:</label>
           <input type="text" name="id" id="id" value="<?php echo $id;?>" disabled>
           <br>
-          <br>
+          <p style="color:red"><?php echo $idErr; ?></p>
 
           <label for="uname">UserName:</label>
-          <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>" disabled>
-
+          <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>" >
+          <br>
+          <p style="color:red"><?php echo $userNameErr; ?></p>
 
           <label for="pass">Password:</label>
           <input type="password" name="password" id="password" value="<?php echo $password; ?>">
@@ -264,7 +284,7 @@ session_start();
       <br>
     </div>
       <div class="footer">
-
+        <?php include 'footer.php';?>
       </div>
       
 
@@ -276,7 +296,7 @@ session_start();
         }
 
         .bg {
-          background-image: url('../images/about3.jpg');
+          background-image: url('bg.jpg');
           min-height: 100%; 
           background-position: center;
           background-repeat: no-repeat;

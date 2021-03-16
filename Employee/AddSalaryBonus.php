@@ -138,7 +138,7 @@
 
 
 
-	    		$file1 = fopen("../database/salary.txt", "a");
+	    		$file1 = fopen("salary.txt", "a");
                 echo "<br>";
 			    fwrite($file1, $json_encoded_text);
                 fwrite($file1, "\n");
@@ -153,6 +153,9 @@
 </div>
 
 	<div class="footer">
+
+    <?php include 'footer.php';?>
+
     </div>
 
 		<style>
@@ -163,7 +166,7 @@
 			    }
 
 			    .bg {
-			      background-image: url('../images/about3.jpg');
+			      background-image: url('bg.jpg');
 			      min-height: 100%; 
 			      background-position: center;
 			      background-repeat: no-repeat;

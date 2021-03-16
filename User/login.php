@@ -5,104 +5,105 @@ session_start();
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Login</title>
   </head>
-  <body >
+  <body>
 
-  	<div class="header">
-        <?php include 'header2.php';?>
-    </div>
-
-  	<div class="bg">
-
+     <center>
     <h1>Login</h1>
-
+     
     <?php
-		$userNameErr = $passwordErr = "" ;
+      $userNameErr = $passwordErr = "" ;
 
-		$userName = "";
-		$password = "";
-		$msg = "";
-		$flag = 0;
+      $userName = "";
+      $password = "";
+      $msg = "";
+      $flag = 0;
 
-		$filepath = "registration.txt";
-		$file = fopen($filepath,'r')
-		or die("unable to open file");
+      $filepath = "registration.txt";
+      $file = fopen($filepath,'r')
+      or die("unable to open file");
 
-		if($_SERVER["REQUEST_METHOD"] == "POST") 
-		{
 
-			if(empty($_POST['uname'])) {
-			  $userNameErr = "Please fill up the username properly";
-			  }
-			else {
-			  $userName = $_POST['uname'];
-			}
+       if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-			if(empty($_POST['password'])) {
-			  $passwordErr = "Please fill up the password properly";
-			}
-			else {
-			  $password = $_POST['password'];
-			}
+        if(empty($_POST['userName'])) {
+          $userNameErr = "Please fill up user name properly";
+        }
+        else {
+          $userName = $_POST['userName'];
+        }
 
-			while($line = fgets($file))
-				{
+        if(empty($_POST['password'])) {
+          $passwordErr = "Please fill up password properly";
+        }
+        else {
+          $password = $_POST['password'];
+        }
 
-	                $json_decoded_text = json_decode($line, true);
+   while($line = fgets($file))
+        {
 
-	                print_r($json_decoded_text);
-	                echo "<br>";
 
-	                $userNameV= $json_decoded_text['userName'];
-	                $passwordV= $json_decoded_text['password'];
-	        
-	                if($userNameV == $userName && $passwordV == $password)
-	                {
-	                    $flag++;
-	                    break;
-	                }       
-            	}
+                  $json_decoded_text = json_decode($line, true);
 
-            	if ($flag>0)
-	            {
-	                $msg = "Logged in";
-	                echo $msg;
-	                echo "<br>";
-	        
-	                $_SESSION['userNameV'] = $userName;
-	                $_SESSION['passwordV'] = $password;
-	            
-	                echo "UserName: " . $_SESSION['userNameV'];
-	                echo "<br>";
-	                echo "Password is: " . $_SESSION['passwordV'];
+                  print_r($json_decoded_text);
+	              echo "<br>";
 
-	                header("Location: ProfileUpdate.php");
-	            }
-	        
-	            else
-	            {
-	                $msg = "Login Denied!!!! Try again...";
-	                echo $msg;
-	            }
-		}
+                  $userNameV= $json_decoded_text['userName'];
+                  $passwordV= $json_decoded_text['password'];
+          
+                  if($userNameV == $userName && $passwordV == $password)
+                  {
+                      $flag++;
+                      break;
+                  }       
+              }
 
-		//session_unset();
-	    //session_destroy();
-	    fclose($file);
+              if ($flag>0)
+              {
+                  $msg = "Logged in";
+                  echo $msg;
+                  echo "<br>";
+          
+                  $_SESSION['userNameV'] = $userName;
+                  $_SESSION['passwordV'] = $password;
+              
+                  echo "UserName: " . $_SESSION['userNameV'];
+                  echo "<br>";
+                  echo "Password is: " . $_SESSION['passwordV'];
+              }
+          
+              else
+              {
+                  $msg = "Login Denied!!!! Try again...";
+                  echo $msg;
+              }
 
-    ?>
+
+          }
+
+          session_unset();
+        session_destroy();
+        fclose($file);
+
+
+
+      ?>
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-      <fieldset style="margin: 0% 40%;">
-        <legend>Login </legend>
+      <fieldset style="margin: 0px 500px ;">
+        <br>
 
-        <label for="uname">UserName:</label>
-        <input type="text" name="uname" id="uname" value="<?php echo $userName; ?>">
+        <legend>Login Information</legend>
+
+        <label for="userName">UserName:</label>
+        <input type="text" name="userName" id="userName" value="<?php echo $userName; ?>">
         <br>
         <p style="color:red"><?php echo $userNameErr; ?></p>
 
-        <label for="pass">Password:</label>
+        <label for="password">Password:</label>
         <input type="password" name="password" id="password" value="<?php echo $password; ?>">
         <br>
         <p style="color:red"><?php echo $passwordErr; ?></p>
@@ -110,46 +111,13 @@ session_start();
 
       </fieldset>
       <br>
-      
-      <input type="submit" value="Login" style="margin-left: 40%;">
-      	
-      </style>
-      <a href="http://localhost/project/userSignup.php" title="">Not yet registered?</a>
 
-	</form>
-  </div>
-  <div class="footer">
-  	<?php include 'footer.php';?>
-  </div> 
 
-	<style>
-		body, html {
-		height: 90%;
-		margin: 0;
-		color: white;
-		}
+    
+      <input type="submit" value="Login">
+      <a href="dsignup.php" title="">Not yet registered?</a>
 
-		.bg {
-		background-image: url('about3.jpg');
-		min-height: 100%; 
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		}
-		.footer{
-		color: white;
-		height: 7%;
-		background-color: #83888A;
-		}
-		legend{
-		    text-align: center;
-		    font-weight: bold;
-		  }
-		h1{
-		text-align: center;
-		}
-
-	</style>
-
+      </form>
+      </center>
     </body>
 </html>

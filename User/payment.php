@@ -6,12 +6,6 @@
   </head>
   <body>
 
-    <div class="header">
-      <?php include 'header.php';?>
-      </div>
-
-    <div class="bg">
-
     <h1>Payment Receipt</h1>
     <hr>
     
@@ -106,7 +100,6 @@
 
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-
         <br>
         <label for="name"><b>Name</b></label>
         <br>
@@ -190,49 +183,5 @@
 
       </form>
       <br>
-
-      </div>
-
-      <div class="footer">
-        <?php include 'footer.php';?>
-      </div>
-
-      <style> 
-      body, html {
-      height: 90%;
-      margin: auto;
-      color: white;
-      }
-
-      .bg {
-<<<<<<< HEAD
-        background-image: url('../images/about3.jpg');
-=======
-        background-image: url('about3.jpg');
->>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
-        min-height: 100%; 
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-      .footer{
-        color: white;
-        height: 7%;
-        background-color: #83888A;
-      }
-
-      h1{
-        text-align: center;
-      }
-
-<<<<<<< HEAD
-      form{
-        margin-left: 20px;
-      }
-
-=======
->>>>>>> a9d7fed09f8ddd5f97a1e70ffd507e4b64797313
-    </style>
-
     </body>
 </html>

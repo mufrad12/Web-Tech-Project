@@ -1,17 +1,12 @@
 
 .mid {
 	position: relative;
-	width: 90%;
+	width: 80%;
 	margin: auto;
 }
 
 .menu {
 	background-color: #34495e;
-}
-
-.menue ul{
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .menu ul li {

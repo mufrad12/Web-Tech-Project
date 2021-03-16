@@ -112,7 +112,7 @@ session_start();
 	</form>
   </div>
   <div class="footer">
-  	<?php include '..\Admin\footer.php';?>
+  	<?php include 'footer.php';?>
   </div> 
 
 	<style>

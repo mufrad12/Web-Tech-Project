@@ -1,2 +1,2 @@
-{"firstName":"Tanvir","lastName":"Shahriar","gender":"male","dob":"1990-12-01","email":"tanvirsiam1101@gmail.com","userName":"calverin","password":"123","conPassword":"123","id":"111"}
-{"firstName":"mufrad","lastName":"mustavi","gender":"male","dob":"2000-12-03","email":"munowarmdsharif@gmail.com","userName":"momojo","password":"456","conPassword":"456","id":"222"}
+{"firstName":"mufrad","lastName":"mustavi","gender":"male","dob":"2021-03-09","email":"calverinsiam1101@gmail.com","userName":"momojo","password":"1101","conPassword":"1101"}
+{"firstName":"mufrad","lastName":"mustavi","gender":"male","dob":"2021-03-09","email":"calverinsiam1101@gmail.com","userName":"momojo","password":"1101","conPassword":"1101"}

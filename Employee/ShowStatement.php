@@ -18,8 +18,8 @@
 			<?php
 		
 
-			  $f1 = fopen("../database/statement.txt", "r");
-			  $data = fread($f1, filesize("../database/statement.txt"));
+			  $f1 = fopen("statement.txt", "r");
+			  $data = fread($f1, filesize("statement.txt"));
 			  fclose($f1);
 
 			  $data_after_newline_delimeter = explode("\n", $data);
@@ -55,7 +55,7 @@
 			?>
 		</div>
 	  <div class="footer">
-	      <?php include '../footer.php';?>
+	      <?php include 'footer.php';?>
 	  </div>
 
 	  <style>
@@ -66,7 +66,7 @@
 				}
 
 				.bg {
-					background-image: url('../images/about3.jpg');
+					background-image: url('bg.jpg');
 					min-height: 100%; 
 					background-position: center;
 					background-repeat: no-repeat;
