@@ -1,6 +1,0 @@
-{"thumbnail":"1.jpg","id":"111","booktitle":"A Game of Thrones","bookauthor":"George R. R. Martin","bookpublisher":"Bantam","bookedition":"1st Edition, March 22, 2011","bookprice":"TK. 1800","sUname":"shop1"}
-{"thumbnail":"2.jpg","id":"222","booktitle":"Harry Potter and the Philosopher's Stone House","bookauthor":"J.K. Rowling","bookpublisher":"Bloomsbury","bookedition":"1st Edition, 1 September 1998","bookprice":"TK. 2100","sUname":"shop1"}
-{"thumbnail":"3.jpeg","id":"333","booktitle":"Megh Pion","bookauthor":"Reshmi Rafik","bookpublisher":"Pencil Publication","bookedition":"1st Published, 2020","bookprice":"TK. 468","sUname":"shop2"}
-{"thumbnail":"4.jpg","id":"444","booktitle":"Amar Bondhu Rashed","bookauthor":"Muhammed Zafar Iqbal","bookpublisher":"Kakoli Publication","bookedition":"28th Edition, 2015","bookprice":"TK. 200","sUname":"shop2"}
-{"thumbnail":"5.jpg","id":"555","booktitle":"The Adventures of Sherlock Holmes","bookauthor":"Conan Doyle","bookpublisher":"Bantam","bookedition":"1st Published, October 22, 2009","bookprice":"TK. 1250","sUname":"shop1"}
-{"thumbnail":"6.jpg","id":"666","booktitle":"Misir Ali Shomogro","bookauthor":"Humayun Ahmed","bookpublisher":"Onnona","bookedition":"5th Printed, 2016","bookprice":"TK. 680","sUname":"shop2"}

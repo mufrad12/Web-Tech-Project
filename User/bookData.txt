@@ -1,1 +1,0 @@
-{"thumbnail":"game.jpg","id":"111","booktitle":"A Game of Thrones","bookauthor":"George R. R. Martin","bookpublisher":"www","bookedition":"1st Edition, March 22, 2011","bookprice":"TK 1800"}

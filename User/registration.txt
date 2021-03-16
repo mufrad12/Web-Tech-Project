@@ -1,2 +1,0 @@
-{"firstName":"mufrad","lastName":"mustavi","gender":"male","dob":"2021-03-09","email":"calverinsiam1101@gmail.com","userName":"momojo","password":"1101","conPassword":"1101"}
-{"firstName":"mufrad","lastName":"mustavi","gender":"male","dob":"2021-03-09","email":"calverinsiam1101@gmail.com","userName":"momojo","password":"1101","conPassword":"1101"}

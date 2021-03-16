@@ -22,8 +22,8 @@
 
 
 
-  $f1 = fopen("salary.txt", "r");
-  $data = fread($f1, filesize("salary.txt"));
+  $f1 = fopen("../database/salary.txt", "r");
+  $data = fread($f1, filesize("../database/salary.txt"));
   fclose($f1);
 
 
@@ -61,7 +61,7 @@
 
 </div>
   <div class="footer">
-      <?php include 'footer.php';?>
+      <?php include '../footer.php';?>
   </div>
 
 
@@ -73,7 +73,7 @@
         }
 
         .bg {
-          background-image: url('bg.jpg');
+          background-image: url('../images/about3.jpg');
           min-height: 100%; 
           background-position: center;
           background-repeat: no-repeat;

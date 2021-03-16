@@ -121,7 +121,7 @@
             <br>
             <br>
             <br>
-            <a href="ShowStatement.php" title="">Show Full Statement</a>
+            <a href="../employee/ShowStatement.php" title="">Show Full Statement</a>
 
 			</form>
 
@@ -141,7 +141,7 @@
 	    		$json_encoded_text = json_encode($arr1); 
 
 
-	    		$file1 = fopen("statement.txt", "a");
+	    		$file1 = fopen("../database/statement.txt", "a");
                 
                 echo "<br>";
 
@@ -163,7 +163,7 @@
 
 	<div class="footer">
 
-    <?php include 'footer.php';?>
+    <?php include '../footer.php';?>
 
     </div>
 
@@ -177,7 +177,7 @@
 		        }
 
 		        .bg {
-		          background-image: url('bg.jpg');
+		          background-image: url('../images/about3.jpg');
 		          min-height: 100%; 
 		          background-position: center;
 		          background-repeat: no-repeat;

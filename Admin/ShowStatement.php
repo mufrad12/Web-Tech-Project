@@ -12,14 +12,16 @@
 	  	</div>
 
 		<div class="bg">
+
+			<br>
 			<h1>Full Income Statement</h1>
-			<br><br><br>
+			<br>
+			<br>
 
 			<?php
-			//$a="abcd";
 
-			  $f1 = fopen("statement.txt", "r");
-			  $data = fread($f1, filesize("statement.txt"));
+			  $f1 = fopen("../database/statement.txt", "r");
+			  $data = fread($f1, filesize("../database/statement.txt"));
 			  fclose($f1);
 
 			  $data_after_newline_delimeter = explode("\n", $data);
@@ -66,7 +68,7 @@
 				}
 
 				.bg {
-					background-image: url('http://sfwallpaper.com/images/background-wallpaper-for-website-1.jpg');
+					background-image: url('../images/about3.jpg');
 					min-height: 100%; 
 					background-position: center;
 					background-repeat: no-repeat;
@@ -87,12 +89,13 @@
 
 	        table, th, td 
 	              {
-	                border: 1px dotted white;
+	                border: 1px solid white;
 	                border-collapse: collapse;
-	                margin: 0% 40%;
+	                margin: auto;
 	              }
 	              th, td {
 	                padding: 15px;
+	                width: 150px;
 	              }
 
 	              th {

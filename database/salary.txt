@@ -1,0 +1,4 @@
+{"userName":"emp1","salary":"20000","bonus":"200"}
+{"userName":"emp2","salary":"20000","bonus":"200"}
+{"userName":"emp3","salary":"25000","bonus":"250"}
+{"userName":"emp4","salary":"56000","bonus":"10000"}

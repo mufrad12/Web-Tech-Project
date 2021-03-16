@@ -1,0 +1,3 @@
+{"thumbnail":"1.jpg","id":"111","booktitle":"A Game of Thrones","bookauthor":"George R. R. Martin","bookpublisher":"Bantam","bookedition":"1st Edition, March 22, 2011","bookprice":"TK. 1800","sUname":"shop1"}
+{"thumbnail":"2.jpg","id":"222","booktitle":"Harry Potter and the Philosopher's Stone House","bookauthor":"J.K. Rowling","bookpublisher":"Bloomsbury","bookedition":"1st Edition, 1 September 1998","bookprice":"TK. 2100","sUname":"shop1"}
+{"thumbnail":"5.jpg","id":"555","booktitle":"The Adventures of Sherlock Holmes","bookauthor":"Conan Doyle","bookpublisher":"Bantam","bookedition":"1st Published, October 22, 2009","bookprice":"TK. 1250","sUname":"shop1"}

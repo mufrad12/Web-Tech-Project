@@ -1,0 +1,5 @@
+{"firstName":"Shatin","lastName":"Hasan","gender":"male","dob":"2021-03-23","email":"shatin.hasan73@gmail.com","id":"18-38712-3","userName":"admin","password":"0000","conPassword":"0000"}
+{"firstName":"Siam","lastName":"Tanveer","gender":"male","dob":"2021-03-12","email":"tanveer@gmail.com","id":"18-38787-3","userName":"admin2","password":"2222","conPassword":"2222"}
+{"firstName":"Abu","lastName":"Jubaer","gender":"male","dob":"2021-03-17","email":"jubaer@gmail.com","id":"18-38784-3","userName":"admin3","password":"3333","conPassword":"3333"}
+{"firstName":"Mufrad","lastName":"Mustavi","gender":"male","dob":"2021-03-18","email":"mufrad@gmail.com","id":"18-38776-3","userName":"admin4","password":"4444","conPassword":"4444"}
+{"firstName":"Khayrul","lastName":"Hasan","gender":"male","dob":"2021-03-03","email":"khayrul@gmail.com","id":"10-38774-3","userName":"admin5","password":"5555","conPassword":"5555"}

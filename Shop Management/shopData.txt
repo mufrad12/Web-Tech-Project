@@ -1,2 +1,0 @@
-{"shopName":"Pathok Book House","shopAddress":"Uttara","id":"111","userName":"shop1","email":"mufrad12@gmail.com","password":"123","confirmpass":"123"}
-{"shopName":"Gyankosh Book Store","shopAddress":"Dhanmondi","id":"222","userName":"shop2","email":"mufrad123@gmail.com","password":"456","confirmpass":"456"}

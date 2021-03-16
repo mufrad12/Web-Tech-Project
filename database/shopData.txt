@@ -1,0 +1,5 @@
+{"shopName":"b","shopAddress":"Uttara","email":"pathok@gmail.com","id":"111","userName":"shop1","password":"0000","confirmpass":"0000"}
+{"shopName":"Gyankosh Book Store","shopAddress":"Dhanmondi","id":"222","userName":"shop2","email":"mufrad123@gmail.com","password":"12345","confirmpass":"12345"}
+{"shopName":"Gronthagar","shopAddress":"Mohammadpur","id":"333","userName":"shop3","email":"18-38712-3@student.aiub.edu","password":"1234","confirmpass":"1234"}
+{"shopName":"Batighor","shopAddress":"Faridpur","email":"batighar@gmail.com","id":"444","userName":"shop4","password":"1227","confirmpass":"1227"}
+{"shopName":"BengalBoi","shopAddress":"Dhanmondi","id":"555","userName":"shop5","email":"bengalboi@gmail.com","password":"6969","confirmpass":"6969"}

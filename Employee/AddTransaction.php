@@ -21,13 +21,13 @@
 
 
 	    <?php
-	      $productIdErr = $shopIdErr = $userIdErr = $ammountErr = "" ;
+	      $productIdErr = $shopUNameErr = $userUNameErr = $ammountErr = "" ;
 
 	      
 
 	      $productId= "";
-	      $shopId= "";
-	      $userId= "";
+	      $shopUName= "";
+	      $userUName= "";
 	      $ammount= "";
 
 
@@ -44,23 +44,23 @@
 	        }
             
 
-            if(empty($_POST['shopId'])) {
-                $shopIdErr = "Please fill up the Shop Id properly";
+            if(empty($_POST['shopUName'])) {
+                $shopUNameErr = "Please fill up the Shop Username properly";
                 }
 
 
               else {
-                $shopId = $_POST['shopId'];
+                $shopUName = $_POST['shopUName'];
               }
 
 
-              if(empty($_POST['userId'])) {
-                $userIdErr = "Please fill up the User Id properly";
+              if(empty($_POST['userUName'])) {
+                $userUNameErr = "Please fill up the User Username properly";
                 }
 
 
               else {
-                $userId = $_POST['userId'];
+                $userUName = $_POST['userUName'];
               }
 
 
@@ -100,23 +100,23 @@
 
 
 
-	        <label for="shopId">Shop Id:</label>
+	        <label for="shopUName">Shop Username:</label>
 
-	        <input type="text" name="shopId" id="shopId" value="<?php echo $shopId; ?>">
-
-	        <br>
-
-	        <p style="color:red"><?php echo $shopIdErr; ?></p>
-
-	        
-	        
-	          <label for="userId">User Id:</label>
-
-	        <input type="text" name="userId" id="userId" value="<?php echo $userId; ?>">
+	        <input type="text" name="shopUName" id="shopUName" value="<?php echo $shopUName; ?>">
 
 	        <br>
 
-	        <p style="color:red"><?php echo $userIdErr; ?></p>
+	        <p style="color:red"><?php echo $shopUNameErr; ?></p>
+
+	        
+	        
+	          <label for="userUName">User Username:</label>
+
+	        <input type="text" name="userUName" id="userUName" value="<?php echo $userUName; ?>">
+
+	        <br>
+
+	        <p style="color:red"><?php echo $userUNameErr; ?></p>
 
 	        
 
@@ -145,7 +145,7 @@
             <br>
             <br>
             <br>
-            <a href="ShowTransaction.php" title="">Show Full Transaction History</a>
+            <a href="../employee/ShowTransaction.php" title="">Show Full Transaction History</a>
 
 			</form>
 
@@ -157,15 +157,15 @@
 
 
 
-			if( $productId!= "" && $shopId != "" && $userId != "" && $ammount != "")
+			if( $productId!= "" && $shopUName != "" && $userUName != "" && $ammount != "")
 			{
 		
-				$arr1 = array( 'productId' => $productId, 'shopId' =>  $shopId, 'userId' => $userId, 'ammount' => $ammount);
+				$arr1 = array( 'productId' => $productId, 'shopUName' =>  $shopUName, 'userUName' => $userUName, 'ammount' => $ammount);
 
 	    		$json_encoded_text = json_encode($arr1); 
 
 
-	    		$file1 = fopen("transaction.txt", "a");
+	    		$file1 = fopen("../database/transaction.txt", "a");
                 
                 echo "<br>";
 
@@ -187,7 +187,7 @@
 
 	<div class="footer">
 
-    <?php include 'footer.php';?>
+    <?php include '../footer.php';?>
 
     </div>
 
@@ -196,12 +196,12 @@
 	<style>
 				body, html {
 		        height: 90%;
-		        margin: 0;
+		        margin: auto;
 		        color: white;
 		        }
 
 		        .bg {
-		          background-image: url('bg.jpg');
+		          background-image: url('../images/about3.jpg');
 		          min-height: 100%; 
 		          background-position: center;
 		          background-repeat: no-repeat;

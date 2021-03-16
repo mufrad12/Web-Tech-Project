@@ -12,6 +12,7 @@
 
     <div class="bg">
 
+      <br>
       <h1>Employee Update/Delete</h1>
 
       <?php
@@ -44,8 +45,8 @@
          }
 
 
-          $f1 = fopen("employee.txt", "r");
-          $data = fread($f1, filesize("employee.txt"));
+          $f1 = fopen("../database/employee.txt", "r");
+          $data = fread($f1, filesize("../database/employee.txt"));
           fclose($f1);
           $data_after_newline_delimeter = explode("\n", $data);
           $arr1 = array();
@@ -152,8 +153,8 @@
             
           }
 
-        $f1 = fopen("employee.txt", "r");
-        $data = fread($f1, filesize("employee.txt"));
+        $f1 = fopen("../database/employee.txt", "r");
+        $data = fread($f1, filesize("../database/employee.txt"));
         fclose($f1);
         $data_after_newline_delimeter = explode("\n", $data);
         $arr1 = array();
@@ -187,7 +188,7 @@
             }
           }
 
-          $f2 = fopen("employee.txt", "w");
+          $f2 = fopen("../database/employee.txt", "w");
           for($j = 0; $j < count($arr1); $j++) {
             $json_encoded = json_encode($arr1[$j]);
             fwrite($f2, $json_encoded . "\n");
@@ -206,7 +207,7 @@
             }
 
           }
-          $f2 = fopen("employee.txt", "w");
+          $f2 = fopen("../database/employee.txt", "w");
           for($j = 0; $j < count($arr1); $j++) {
             $json_encoded = json_encode($arr1[$j]);
             fwrite($f2, $json_encoded . "\n");
@@ -319,7 +320,7 @@
         }
 
         .bg {
-          background-image: url('http://sfwallpaper.com/images/background-wallpaper-for-website-1.jpg');
+          background-image: url('../images/about3.jpg');
           min-height: 100%; 
           background-position: center;
           background-repeat: no-repeat;

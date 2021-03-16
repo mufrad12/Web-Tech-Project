@@ -5,11 +5,14 @@
     <title>Contact Us</title>
   </head>
   <body>
-<div class="header">
-      <?php include 'header.php';?>
-  </div>
-<h1>Contact Us</h1>
 
+  <div class="header">
+			<?php include 'header.php';?>
+	  	</div>
+
+		<div class="bg">
+
+		<h1>Contact Us</h1>
 
 <?php
 		$nameErr = $numberErr= $emailErr= $subjectErr="";
@@ -45,7 +48,7 @@
 				{ $emailErr = "Invalid email format"; }
 		         }
 
-	        if(isset($_POST['subject'])) {
+	        if(empty($_POST['subject'])) {
 				$subjectErr = "Please fill up the comments properly";
 			}
 			else {
@@ -54,11 +57,7 @@
 
 		     }
 
-
-
 	?>
-
-
 
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 
@@ -81,16 +80,11 @@
 
 			<label for="subject">Comments:</label>
 
-			<textarea name="subject" rows="7" cols="40" style="width:650px;margin-left: 50px;vertical-align: middle;" 
-			value="<?php echo $subject; ?>" >
+			<textarea name="subject" id="subject"  rows="10" cols="20" style="width:650px;margin-left: 50px;vertical-align: middle;" value="<?php echo $subject; ?>" >
 			</textarea>
 
 			<p style="color:red"><?php echo $subjectErr; ?></p>
 
-
-			
-			<br>
-            <br>
 			<input type="submit" value="Submit" style="width:100px;margin-left: 125px;vertical-align: middle;">
 
 	
@@ -112,12 +106,46 @@
 
           $json_encoded_text = json_encode($arr1); 
             
-            $file1 = fopen("supportShop.txt", "a");
+            $file1 = fopen("../database/support.txt", "a");
             fwrite($file1, $json_encoded_text);
             fwrite($file1, "\n");
 
             fclose($file1);
         }
       ?>
-		</body>
+		</div>
+	  <div class="footer">
+	      <?php include 'footer.php';?>
+	  </div>
+
+	  <style>
+			body, html {
+				height: 90%;
+				margin: 0;
+				color: white;
+				}
+
+				.bg {
+					background-image: url('../images/about3.jpg');
+					min-height: 100%; 
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+				}
+				.footer{
+					color: white;
+					height: 7%;
+					background-color: #83888A;
+				}
+				legend{
+		          text-align: center;
+		          font-weight: bold;
+		        }
+		        h1{
+		        	text-align: center;
+		        } 
+
+		</style>
+	</body>
+
 </html>

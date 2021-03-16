@@ -5,6 +5,14 @@
 	margin: auto;
 }
 
+
+.logo{
+    margin-top: 3px;
+    margin-left: 50px;
+    width: 10%;
+    float: left;
+}
+
 .menu {
 	background-color: #34495e;
 }
